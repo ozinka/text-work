@@ -70,12 +70,14 @@
         "editor.quickSuggestions": false,
         "editor.suggestOnTriggerCharacters": false,
         "editor.parameterHints.enabled": false,
-        "editor.wordBasedSuggestions": false
+        "editor.wordBasedSuggestions": false,
+        "editor.fontFamily": "PasswordMask, monospace",
+        "editor.fontLigatures": false
       }
-    },
-    "repository": {
-      "type": "git",
-      "url": "https://github.com/ozinka/ozi-syntax.git"
     }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ozinka/ozi-highlighting.git"
   }
 }
