@@ -4,6 +4,7 @@
   "scopeName": "source.ozi-work",
   "patterns": [
     { "include": "#comments" },
+    { "include": "#uuid" },
     { "include": "#strings" },
     { "include": "#numbers" },
     { "include": "#emails" },
@@ -16,7 +17,7 @@
     { "include": "#violet" },
     { "include": "#entity" }
   ],
-  "repository": {
+  "repository": {    
     "comments": {
       "patterns": [
         {
@@ -26,6 +27,14 @@
         {
           "name": "comment.line.double-dash.ozi-work",
           "match": "--.*$"
+        }
+      ]
+    },
+    "uuid": {
+      "patterns": [
+        {
+          "name": "constant.language.uuid.ozi-work",
+          "match": "\\b[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}\\b"
         }
       ]
     },
@@ -41,7 +50,7 @@
       "patterns": [
         {
           "name": "keyword.other.password.ozi-work",
-          "match": "\\b\\w+(?=\\s*@pass\\b)"
+          "match": "\\S+(?=\\s+@pass\\b)"
         }
       ]
     },
@@ -87,7 +96,7 @@
       "patterns": [
         {
           "name": "constant.language.boolean.true.ozi-work",
-          "match": "(?i)\\b(true|ok|good|done|green|yes|passed)\\b",
+          "match": "(?i)\\b(true|ok|good|done|green|prod|yes|passed|eligible)\\b",
           "captures": {
             "0": {
               "name": "constant.language.boolean.true.ozi-work"
@@ -96,7 +105,11 @@
         },
         {
           "name": "constant.language.boolean.false.ozi-work",
-          "match": "(?i)\\b(false|fail|failed|red|error)\\b",
+          "match": "(?i)\\bnot\\s+eligible\\b"
+        },
+        {
+          "name": "constant.language.boolean.false.ozi-work",
+          "match": "(?i)\\b(false|fail|failed|red|error|no|not)\\b",
           "captures": {
             "0": {
               "name": "constant.language.boolean.false.ozi-work"
@@ -117,7 +130,7 @@
       "patterns": [
         {
           "name": "constant.language.abbreviation.ozi-work",
-          "match": "(?i)\\b(violet)\\b"
+          "match": "(?i)\\b(violet|run|if|else|alcon)\\b"
         }
       ]
     },
@@ -134,6 +147,14 @@
         {
           "name": "entity.name.tag.ozi-work",
           "match": "\\s@[A-Za-z0-9_\\-]+"
+        },
+        {
+          "name": "entity.name.tag.ozi-work",
+          "match": "(?i)\\b(dev|yellow)\\b"
+        },
+        {
+          "name": "entity.name.tag.ozi-work",
+          "match": "\\bis[A-Z][a-zA-Z]*\\b"
         }
       ]
     },
@@ -141,7 +162,7 @@
       "patterns": [
         {
           "name": "punctuation.symbol.ozi-work",
-          "match": "[-,.:;(){}\\[\\]\"']"
+          "match": "[-=\\|,.:;(){}\\[\\]\"']"
         }
       ]
     },
