@@ -69,6 +69,10 @@
         {
           "name": "markup.underline.link.email.ozi-work",
           "match": "\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}\\b"
+        },
+        {
+          "name": "markup.underline.link.http.ozi-work",
+          "match": "\\bhttps?://[\\w\\-\\.]+(?:/[\\w\\-./?%&=]*)?\\b"
         }
       ]
     },
@@ -148,7 +152,7 @@
       "patterns": [
         {
           "name": "keyword.other.status.ozi-work",
-          "match": "(?i)\\b(status|error)\\b"
+          "match": "(?i)\\b(status|cp|mv|tf|npm|npx)\\b"
         }
       ]
     },
@@ -156,7 +160,7 @@
       "patterns": [
         {
           "name": "constant.language.abbreviation.ozi-work",
-          "match": "(?i)\\b(violet|run|if|else|alcon|cp|mv|tf|npm)\\b"
+          "match": "(?i)\\b(violet|run|if|else|install)\\b"
         }
       ]
     },

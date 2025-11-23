@@ -23,15 +23,73 @@ function insertDateTimeLine(editor, { before = false } = {}) {
   });
 }
 
-function activate(context) {
-  const register = (cmd, options) => vscode.commands.registerCommand(cmd, () => {
-    const editor = vscode.window.activeTextEditor;
-    insertDateTimeLine(editor, options);
+function handleEnter() {
+  const editor = vscode.window.activeTextEditor;
+  if (!editor) return;
+
+  const position = editor.selection.active;
+  const line = editor.document.lineAt(position.line);
+  const text = line.text;
+
+  const regex = /^(\s*)([\*\-•]|\d+\.)\s+(.*)$/;
+  const match = text.match(regex);
+
+  if (!match) {
+    vscode.commands.executeCommand('type', { source: 'keyboard', text: '\n' });
+    return;
+  }
+
+  const [fullMatch, indent, bullet, content] = match;
+
+  if (content.trim().length === 0) {
+    editor.edit(editBuilder => {
+      editBuilder.replace(line.range, '');
+      editBuilder.insert(line.range.start, '\n');
+    });
+    return;
+  }
+
+  let newBullet = bullet;
+  let currentLineReplacement = null;
+
+  if (bullet === '*') {
+    newBullet = '•';
+    const bulletIndex = text.indexOf('*');
+    if (bulletIndex >= 0) {
+      const bulletRange = new vscode.Range(
+        position.line, bulletIndex,
+        position.line, bulletIndex + 1
+      );
+      currentLineReplacement = { range: bulletRange, text: '•' };
+    }
+  } else if (/^\d+\.$/.test(bullet)) {
+    const num = parseInt(bullet.slice(0, -1));
+    newBullet = `${num + 1}.`;
+  }
+
+  const textToInsert = `\n${indent}${newBullet} `;
+
+  editor.edit(editBuilder => {
+    if (currentLineReplacement) {
+      editBuilder.replace(currentLineReplacement.range, currentLineReplacement.text);
+    }
+    editBuilder.insert(position, textToInsert);
   });
+}
+
+function activate(context) {
+  const register = (cmd, callback) => vscode.commands.registerCommand(cmd, callback);
 
   context.subscriptions.push(
-    register('oziWork.insertDateTimeLineAfter', { before: false }), // Alt+Enter
-    register('oziWork.insertDateTimeLineBefore', { before: true })   // Alt+Shift+Enter
+    register('oziWork.insertDateTimeLineAfter', () => {
+      const editor = vscode.window.activeTextEditor;
+      insertDateTimeLine(editor, { before: false });
+    }),
+    register('oziWork.insertDateTimeLineBefore', () => {
+      const editor = vscode.window.activeTextEditor;
+      insertDateTimeLine(editor, { before: true });
+    }),
+    register('oziWork.onEnter', handleEnter)
   );
 }
 

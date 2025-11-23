@@ -1,44 +1,45 @@
-# Ozi Work Tools
+# Ozi Highlighting
 
-A lightweight Visual Studio Code extension providing quick date-time line insertion commands and minimal syntax highlighting for plain text files.
+Custom highlighting and productivity tools for `.txt` files (and `ozi-work` language).
 
 ## Features
 
-### 🕒 Date-Time Line Insertion
-Quickly insert a formatted separator line with the current date and time:
+### 1. Custom Highlighting
+Provides rich syntax highlighting for `.txt` files, treating them as `ozi-work` language.
+- **Keywords**: `status`, `error`, `violet`, `run`, `if`, `else`, `install`, `cp`, `mv`, `tf`, `npm`, `npx`.
+- **UUIDs**: Automatically highlights UUIDs.
+- **Dates**: Highlights date patterns.
+- **Booleans**: Highlights `true`, `false`, `ok`, `fail`, etc.
+- **Tags**: Highlights `@tags`.
+- **Emails & URLs**: Highlights email addresses and web links (`http://`, `https://`).
+- **Abbreviations**: Highlights uppercase abbreviations (e.g., `ABC`, `API`) and words with underscores (e.g., `SN_Global_Support`).
 
-- **Insert Below (Alt + Enter)** – Inserts the line *after* the current cursor.
-- **Insert Above (Alt + Shift + Enter)** – Inserts the line *before* the current cursor and moves the caret upward.
+### 2. Autobullet Lists
+Automatically manages lists when you press `Enter`:
+- `* text` -> `• text` (converts `*` to `•`)
+- `• text` -> continues with `• `
+- `- text` -> continues with `- `
+- `1. text` -> continues with `2. ` (increments numbers)
+- Pressing `Enter` on an empty list item clears the line.
 
-The inserted line looks like this:
+### 3. Date/Time Insertion
+- **Alt+Enter**: Insert current date/time separator line *after* the cursor.
+- **Shift+Alt+Enter**: Insert current date/time separator line *before* the cursor.
 
-— ✄ ——— 2025.10.17 17:43 —————––
+## Usage
 
-### 🎨 Syntax Highlighting (Optional)
-- Basic syntax highlighting for `.txt` files labeled with the language id `ozi-work`.
-- Word suggestions and IntelliSense are **disabled** for distraction-free editing.
+1. Open any `.txt` file.
+2. The language mode should automatically switch to `ozi-work` (or you can select it manually).
+3. Enjoy the highlighting and productivity features!
 
-### ⚙️ Usage
-1. Open a `.txt` file.
-2. Set the language mode to **Ozi Work** (bottom-right corner → “Select Language Mode” → choose *Ozi Work*).
-3. Use one of the keybindings:
-   - `Alt + Enter` → Insert date-time line **below**
-   - `Alt + Shift + Enter` → Insert date-time line **above**
+## Extension Settings
 
-### 🔧 Extension Commands
-| Command ID | Description | Default Shortcut |
-|-------------|-------------|------------------|
-| `oziWork.insertDateTimeLineAfter` | Insert a date-time separator line after the cursor | `Alt + Enter` |
-| `oziWork.insertDateTimeLineBefore` | Insert a date-time separator line before the cursor | `Alt + Shift + Enter` |
+This extension contributes the following settings:
 
-### 🧩 Motivation
-Originally created as a personal utility to help organize text notes, logs, and ideas without leaving the keyboard.
+*   `editor.tokenColorCustomizations`: Customizes colors for specific syntax tokens.
+*   `editor.semanticTokenColorCustomizations`: Customizes semantic token colors.
 
-### 💡 Example Use Cases
-- Inserting timestamp separators in logs or notes.
-- Structuring brainstorming sessions.
-- Keeping quick developer diaries.
+## Release Notes
 
----
-
-**Enjoy your clean and practical note workflow with Ozi Work Tools!**
+### 0.0.1
+Initial release with highlighting, autobullet, and date/time insertion features.

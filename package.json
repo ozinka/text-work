@@ -1,20 +1,19 @@
 {
   "name": "ozi-highlighting",
-  "displayName": "ozi_highlighting",
-  "description": ".txt",
+  "displayName": "Ozi Highlighting",
+  "description": "Custom highlighting and productivity tools for .txt files",
   "version": "0.0.1",
   "publisher": "ozi-dev",
   "engines": {
     "vscode": "^1.105.0"
   },
   "categories": [
-    "Programming Languages"
+    "Programming Languages",
+    "Themes",
+    "Other"
   ],
   "main": "./extension.js",
-  "activationEvents": [
-    "onCommand:oziWork.insertDateTimeLineAfter",
-    "onCommand:oziWork.insertDateTimeLineBefore"
-  ],
+  "activationEvents": [],
   "contributes": {
     "languages": [
       {
@@ -44,6 +43,10 @@
       {
         "command": "oziWork.insertDateTimeLineBefore",
         "title": "Insert Date Time Line Before"
+      },
+      {
+        "command": "oziWork.onEnter",
+        "title": "On Enter"
       }
     ],
     "keybindings": [
@@ -56,6 +59,11 @@
         "command": "oziWork.insertDateTimeLineBefore",
         "key": "shift+alt+enter",
         "when": "editorTextFocus"
+      },
+      {
+        "command": "oziWork.onEnter",
+        "key": "enter",
+        "when": "editorTextFocus && editorLangId == ozi-work && !suggestWidgetVisible"
       }
     ],
     "configurationDefaults": {
@@ -63,7 +71,7 @@
         "editor.quickSuggestions": false,
         "editor.suggestOnTriggerCharacters": false,
         "editor.parameterHints.enabled": false,
-        "editor.wordBasedSuggestions": false,
+        "editor.wordBasedSuggestions": "off",
         "editor.fontFamily": "PasswordMask, monospace",
         "editor.fontLigatures": false
       },
