@@ -4,7 +4,10 @@
   "scopeName": "source.ozi-work",
   "patterns": [
     {
-      "include": "#bullets"
+      "include": "#colorWords"
+    },
+    {
+      "include": "#passwordPattern"
     },
     {
       "include": "#comments"
@@ -34,13 +37,16 @@
       "include": "#tags"
     },
     {
-      "include": "#passwordPattern"
-    },
-    {
       "include": "#punctuation"
     },
     {
       "include": "#violet"
+    },
+    {
+      "include": "#blue"
+    },
+    {
+      "include": "#bullets"
     },
     {
       "include": "#entity"
@@ -167,11 +173,43 @@
         }
       ]
     },
+    "colorWords": {
+      "patterns": [
+        {
+          "name": "support.constant.color.violet.ozi-work",
+          "match": "(?i)\\bviolet\\b"
+        },
+        {
+          "name": "support.constant.color.red.ozi-work",
+          "match": "(?i)\\bred\\b"
+        },
+        {
+          "name": "support.constant.color.green.ozi-work",
+          "match": "(?i)\\bgreen\\b"
+        },
+        {
+          "name": "support.constant.color.yellow.ozi-work",
+          "match": "(?i)\\byellow\\b"
+        }
+      ]
+    },
     "bullets": {
       "patterns": [
         {
           "match": "^(\\s*)([\\*\\-•▪▫◦‣⁃]\\s|\\d+\\.\\s|[a-zA-Z]\\.\\s|[ivxlcdmIVXLCDM]+\\.\\s|\\.\\s)",
-          "name": "markup.list.bullet.ozi-work"
+          "captures": {
+            "2": {
+              "name": "constant.language.blue.ozi-work"
+            }
+          }
+        }
+      ]
+    },
+    "blue": {
+      "patterns": [
+        {
+          "name": "constant.language.blue.ozi-work",
+          "match": "(?i)\\b(blue)\\b"
         }
       ]
     },

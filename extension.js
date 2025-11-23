@@ -105,6 +105,9 @@ function handleEnter() {
       );
       currentLineReplacement = { range: bulletRange, text: '•' };
     }
+  } else if (['-', '•', '▪', '▫', '◦', '‣', '⁃'].includes(bullet)) {
+    // Keep the same bullet
+    newBullet = bullet;
   } else if (/^\d+\.$/.test(bullet)) {
     const num = parseInt(bullet.slice(0, -1));
     newBullet = `${num + 1}.`;

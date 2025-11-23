@@ -3,20 +3,18 @@
   "displayName": "Ozi Highlighting",
   "description": "Custom highlighting and productivity tools for .txt files",
   "version": "0.0.1",
-  "license": "MIT",
   "publisher": "ozi-dev",
   "engines": {
-    "vscode": "^1.60.0"
+    "vscode": "^1.105.0"
   },
   "categories": [
     "Programming Languages",
+    "Themes",
     "Other"
   ],
   "main": "./extension.js",
   "activationEvents": [
-    "onCommand:oziWork.insertDateTimeLineAfter",
-    "onCommand:oziWork.insertDateTimeLineBefore",
-    "onCommand:oziWork.onEnter"
+    "onLanguage:ozi-work"
   ],
   "contributes": {
     "languages": [
@@ -94,301 +92,335 @@
         "editor.parameterHints.enabled": false,
         "editor.wordBasedSuggestions": "off",
         "editor.fontFamily": "PasswordMask, monospace",
-        "editor.fontLigatures": false,
-        "editor.semanticTokenColorCustomizations": {
-          "rules": {
-            "annotation:dart": {
-              "foreground": "#d19a66"
-            },
-            "enumMember": {
-              "foreground": "#56b6c2"
-            },
-            "macro": {
-              "foreground": "#d19a66"
-            },
-            "memberOperatorOverload": {
-              "foreground": "#c678dd"
-            },
-            "parameter.label:dart": {
+        "editor.fontLigatures": false
+      },
+      "editor.semanticTokenColorCustomizations": {
+        "rules": {
+          "annotation:dart": {
+            "foreground": "#d19a66"
+          },
+          "enumMember": {
+            "foreground": "#56b6c2"
+          },
+          "macro": {
+            "foreground": "#d19a66"
+          },
+          "memberOperatorOverload": {
+            "foreground": "#c678dd"
+          },
+          "parameter.label:dart": {
+            "foreground": "#abb2bf"
+          },
+          "property:dart": {
+            "foreground": "#d19a66"
+          },
+          "tomlArrayKey": {
+            "foreground": "#e5c07b"
+          },
+          "variable:dart": {
+            "foreground": "#d19a66"
+          },
+          "variable.constant": {
+            "foreground": "#d19a66"
+          },
+          "variable.defaultLibrary": {
+            "foreground": "#e5c07b"
+          }
+        }
+      },
+      "editor.tokenColorCustomizations": {
+        "textMateRules": [
+          {
+            "name": "[ozi-work] Markdown headings",
+            "scope": "entity.name.section.markdown",
+            "settings": {
+              "foreground": "#e06c75"
+            }
+          },
+          {
+            "name": "[ozi-work] Markdown heading Punctuation Definition",
+            "scope": "punctuation.definition.heading.markdown",
+            "settings": {
+              "foreground": "#e06c75"
+            }
+          },
+          {
+            "name": "[ozi-work] Markdown heading setext",
+            "scope": "markup.heading.setext",
+            "settings": {
               "foreground": "#abb2bf"
-            },
-            "property:dart": {
+            }
+          },
+          {
+            "name": "[ozi-work] Markdown Punctuation Definition Bold",
+            "scope": "punctuation.definition.bold.markdown",
+            "settings": {
               "foreground": "#d19a66"
-            },
-            "tomlArrayKey": {
+            }
+          },
+          {
+            "name": "[ozi-work] Markdown Inline Raw",
+            "scope": "markup.inline.raw.markdown",
+            "settings": {
+              "foreground": "#98c379"
+            }
+          },
+          {
+            "name": "[ozi-work] Markdown Inline Raw",
+            "scope": "markup.inline.raw.string.markdown",
+            "settings": {
+              "foreground": "#98c379"
+            }
+          },
+          {
+            "name": "[ozi-work] Markdown Inline Raw punctuation",
+            "scope": "punctuation.definition.raw.markdown",
+            "settings": {
               "foreground": "#e5c07b"
-            },
-            "variable:dart": {
-              "foreground": "#d19a66"
-            },
-            "variable.constant": {
-              "foreground": "#d19a66"
-            },
-            "variable.defaultLibrary": {
+            }
+          },
+          {
+            "name": "[ozi-work] Markdown List Punctuation Definition",
+            "scope": "punctuation.definition.list.markdown",
+            "settings": {
               "foreground": "#e5c07b"
+            }
+          },
+          {
+            "name": "[ozi-work] Markdown Punctuation Definition String",
+            "scope": [
+              "punctuation.definition.string.begin.markdown",
+              "punctuation.definition.string.end.markdown",
+              "punctuation.definition.metadata.markdown"
+            ],
+            "settings": {
+              "foreground": "#e06c75"
+            }
+          },
+          {
+            "name": "[ozi-work] Markdown Punctuation Definition Link",
+            "scope": "punctuation.definition.metadata.markdown",
+            "settings": {
+              "foreground": "#e06c75"
+            }
+          },
+          {
+            "name": "[ozi-work] Markdown Underline Link/Image",
+            "scope": "markup.underline.link.markdown,markup.underline.link.image.markdown",
+            "settings": {
+              "foreground": "#c678dd"
+            }
+          },
+          {
+            "name": "[ozi-work] Markdown Link Title/Description",
+            "scope": "string.other.link.title.markdown,string.other.link.description.markdown",
+            "settings": {
+              "foreground": "#61afef"
+            }
+          },
+          {
+            "name": "[ozi-work] Asciidoc Inline Raw",
+            "scope": "markup.raw.monospace.asciidoc",
+            "settings": {
+              "foreground": "#98c379"
+            }
+          },
+          {
+            "name": "[ozi-work] Asciidoc Inline Raw Punctuation Definition",
+            "scope": "punctuation.definition.asciidoc",
+            "settings": {
+              "foreground": "#e5c07b"
+            }
+          },
+          {
+            "name": "[ozi-work] Asciidoc List Punctuation Definition",
+            "scope": "markup.list.asciidoc",
+            "settings": {
+              "foreground": "#e5c07b"
+            }
+          },
+          {
+            "name": "[ozi-work] Asciidoc underline link",
+            "scope": "markup.link.asciidoc,markup.other.url.asciidoc",
+            "settings": {
+              "foreground": "#c678dd"
+            }
+          },
+          {
+            "name": "[ozi-work] Asciidoc link name",
+            "scope": "string.unquoted.asciidoc,markup.other.url.asciidoc",
+            "settings": {
+              "foreground": "#61afef"
+            }
+          },
+          {
+            "name": "[ozi-work] JSON Property Name",
+            "scope": "support.type.property-name.json",
+            "settings": {
+              "foreground": "#e06c75"
+            }
+          },
+          {
+            "name": "[ozi-work] JSON Punctuation for Property Name",
+            "scope": "support.type.property-name.json punctuation",
+            "settings": {
+              "foreground": "#e06c75"
+            }
+          },
+          {
+            "name": "[ozi-work] Markdown Quote",
+            "scope": "markup.quote.markdown",
+            "settings": {
+              "foreground": "#5c6370"
+            }
+          },
+          {
+            "scope": "source.ozi-work",
+            "settings": {
+              "foreground": "#e0e0e0"
+            }
+          },
+          {
+            "scope": [
+              "comment.line.double-slash.ozi-work",
+              "comment.line.double-dash.ozi-work"
+            ],
+            "settings": {
+              "foreground": "#7a7a7a",
+              "fontStyle": "italic"
+            }
+          },
+          {
+            "scope": "string.quoted.double.ozi-work",
+            "settings": {
+              "foreground": "#b7cfa0"
+            }
+          },
+          {
+            "scope": "markup.underline.link.email.ozi-work",
+            "settings": {
+              "foreground": "#61afef",
+              "fontStyle": "underline"
+            }
+          },
+          {
+            "scope": "constant.numeric.ozi-work",
+            "settings": {
+              "foreground": "#8f87fd"
+            }
+          },
+          {
+            "scope": [
+              "constant.language.boolean.true.ozi-work",
+              "constant.language.boolean.true.ozi-work .constant.language.boolean.true.ozi-work"
+            ],
+            "settings": {
+              "foreground": "#6fbf6f"
+            }
+          },
+          {
+            "scope": [
+              "constant.language.boolean.false.ozi-work",
+              "constant.language.boolean.false.ozi-work .constant.language.boolean.false.ozi-work"
+            ],
+            "settings": {
+              "foreground": "#d96b6b"
+            }
+          },
+          {
+            "scope": "keyword.other.status.ozi-work",
+            "settings": {
+              "foreground": "#9ecbff"
+            }
+          },
+          {
+            "scope": "constant.language.abbreviation.ozi-work",
+            "settings": {
+              "foreground": "#d084ff"
+            }
+          },
+          {
+            "scope": "constant.language.blue.ozi-work",
+            "settings": {
+              "foreground": "#8488ff"
+            }
+          },
+          {
+            "scope": "entity.name.tag.ozi-work",
+            "settings": {
+              "foreground": "#e0c86b"
+            }
+          },
+          {
+            "scope": "punctuation.symbol.ozi-work",
+            "settings": {
+              "foreground": "#d7a984"
+            }
+          },
+          {
+            "scope": [
+              "keyword.control.ozi-work",
+              "keyword.ozi-work",
+              "variable.language.ozi-work"
+            ],
+            "settings": {
+              "foreground": "#9ecbff"
+            }
+          },
+          {
+            "scope": "keyword.other.password.ozi-work",
+            "settings": {
+              "foreground": "#ff5555",
+              "fontStyle": "bold"
+            }
+          },
+          {
+            "scope": "constant.language.uuid.ozi-work",
+            "settings": {
+              "foreground": "#a4f5f8"
+            }
+          },
+          {
+            "scope": "entity.name.label.ozi-work",
+            "settings": {
+              "foreground": "#cd9b6a"
+            }
+          },
+          {
+            "scope": "markup.list.bullet.ozi-work",
+            "settings": {
+              "foreground": "#ff5555"
+            }
+          },
+          {
+            "name": "[ozi-work] Explicit Color - Violet",
+            "scope": "support.constant.color.violet.ozi-work",
+            "settings": {
+              "foreground": "#de92f9"
+            }
+          },
+          {
+            "name": "[ozi-work] Explicit Color - Red",
+            "scope": "support.constant.color.red.ozi-work",
+            "settings": {
+              "foreground": "#ff5555"
+            }
+          },
+          {
+            "name": "[ozi-work] Explicit Color - Green",
+            "scope": "support.constant.color.green.ozi-work",
+            "settings": {
+              "foreground": "#55ff55"
+            }
+          },
+          {
+            "name": "[ozi-work] Explicit Color - Yellow",
+            "scope": "support.constant.color.yellow.ozi-work",
+            "settings": {
+              "foreground": "#ffff55"
             }
           }
-        },
-        "editor.tokenColorCustomizations": {
-          "textMateRules": [
-            {
-              "name": "[ozi-work] Markdown headings",
-              "scope": "entity.name.section.markdown",
-              "settings": {
-                "foreground": "#e06c75"
-              }
-            },
-            {
-              "name": "[ozi-work] Markdown heading Punctuation Definition",
-              "scope": "punctuation.definition.heading.markdown",
-              "settings": {
-                "foreground": "#e06c75"
-              }
-            },
-            {
-              "name": "[ozi-work] Markdown heading setext",
-              "scope": "markup.heading.setext",
-              "settings": {
-                "foreground": "#abb2bf"
-              }
-            },
-            {
-              "name": "[ozi-work] Markdown Punctuation Definition Bold",
-              "scope": "punctuation.definition.bold.markdown",
-              "settings": {
-                "foreground": "#d19a66"
-              }
-            },
-            {
-              "name": "[ozi-work] Markdown Inline Raw",
-              "scope": "markup.inline.raw.markdown",
-              "settings": {
-                "foreground": "#98c379"
-              }
-            },
-            {
-              "name": "[ozi-work] Markdown Inline Raw",
-              "scope": "markup.inline.raw.string.markdown",
-              "settings": {
-                "foreground": "#98c379"
-              }
-            },
-            {
-              "name": "[ozi-work] Markdown Inline Raw punctuation",
-              "scope": "punctuation.definition.raw.markdown",
-              "settings": {
-                "foreground": "#e5c07b"
-              }
-            },
-            {
-              "name": "[ozi-work] Markdown List Punctuation Definition",
-              "scope": "punctuation.definition.list.markdown",
-              "settings": {
-                "foreground": "#e5c07b"
-              }
-            },
-            {
-              "name": "[ozi-work] Markdown Punctuation Definition String",
-              "scope": [
-                "punctuation.definition.string.begin.markdown",
-                "punctuation.definition.string.end.markdown",
-                "punctuation.definition.metadata.markdown"
-              ],
-              "settings": {
-                "foreground": "#e06c75"
-              }
-            },
-            {
-              "name": "[ozi-work] Markdown Punctuation Definition Link",
-              "scope": "punctuation.definition.metadata.markdown",
-              "settings": {
-                "foreground": "#e06c75"
-              }
-            },
-            {
-              "name": "[ozi-work] Markdown Underline Link/Image",
-              "scope": "markup.underline.link.markdown,markup.underline.link.image.markdown",
-              "settings": {
-                "foreground": "#c678dd"
-              }
-            },
-            {
-              "name": "[ozi-work] Markdown Link Title/Description",
-              "scope": "string.other.link.title.markdown,string.other.link.description.markdown",
-              "settings": {
-                "foreground": "#61afef"
-              }
-            },
-            {
-              "name": "[ozi-work] Asciidoc Inline Raw",
-              "scope": "markup.raw.monospace.asciidoc",
-              "settings": {
-                "foreground": "#98c379"
-              }
-            },
-            {
-              "name": "[ozi-work] Asciidoc Inline Raw Punctuation Definition",
-              "scope": "punctuation.definition.asciidoc",
-              "settings": {
-                "foreground": "#e5c07b"
-              }
-            },
-            {
-              "name": "[ozi-work] Asciidoc List Punctuation Definition",
-              "scope": "markup.list.asciidoc",
-              "settings": {
-                "foreground": "#e5c07b"
-              }
-            },
-            {
-              "name": "[ozi-work] Asciidoc underline link",
-              "scope": "markup.link.asciidoc,markup.other.url.asciidoc",
-              "settings": {
-                "foreground": "#c678dd"
-              }
-            },
-            {
-              "name": "[ozi-work] Asciidoc link name",
-              "scope": "string.unquoted.asciidoc,markup.other.url.asciidoc",
-              "settings": {
-                "foreground": "#61afef"
-              }
-            },
-            {
-              "name": "[ozi-work] JSON Property Name",
-              "scope": "support.type.property-name.json",
-              "settings": {
-                "foreground": "#e06c75"
-              }
-            },
-            {
-              "name": "[ozi-work] JSON Punctuation for Property Name",
-              "scope": "support.type.property-name.json punctuation",
-              "settings": {
-                "foreground": "#e06c75"
-              }
-            },
-            {
-              "name": "[ozi-work] Markdown Quote",
-              "scope": "markup.quote.markdown",
-              "settings": {
-                "foreground": "#5c6370"
-              }
-            },
-            {
-              "scope": "source.ozi-work",
-              "settings": {
-                "foreground": "#e0e0e0"
-              }
-            },
-            {
-              "scope": [
-                "comment.line.double-slash.ozi-work",
-                "comment.line.double-dash.ozi-work"
-              ],
-              "settings": {
-                "foreground": "#7a7a7a",
-                "fontStyle": "italic"
-              }
-            },
-            {
-              "scope": "string.quoted.double.ozi-work",
-              "settings": {
-                "foreground": "#b7cfa0"
-              }
-            },
-            {
-              "scope": "markup.underline.link.email.ozi-work",
-              "settings": {
-                "foreground": "#61afef",
-                "fontStyle": "underline"
-              }
-            },
-            {
-              "scope": "constant.numeric.ozi-work",
-              "settings": {
-                "foreground": "#8f87fd"
-              }
-            },
-            {
-              "scope": [
-                "constant.language.boolean.true.ozi-work",
-                "constant.language.boolean.true.ozi-work .constant.language.boolean.true.ozi-work"
-              ],
-              "settings": {
-                "foreground": "#6fbf6f"
-              }
-            },
-            {
-              "scope": [
-                "constant.language.boolean.false.ozi-work",
-                "constant.language.boolean.false.ozi-work .constant.language.boolean.false.ozi-work"
-              ],
-              "settings": {
-                "foreground": "#d96b6b"
-              }
-            },
-            {
-              "scope": "keyword.other.status.ozi-work",
-              "settings": {
-                "foreground": "#9ecbff"
-              }
-            },
-            {
-              "scope": "constant.language.abbreviation.ozi-work",
-              "settings": {
-                "foreground": "#de92f9"
-              }
-            },
-            {
-              "scope": "entity.name.tag.ozi-work",
-              "settings": {
-                "foreground": "#e0c86b"
-              }
-            },
-            {
-              "scope": "punctuation.symbol.ozi-work",
-              "settings": {
-                "foreground": "#d7a984"
-              }
-            },
-            {
-              "scope": [
-                "keyword.control.ozi-work",
-                "keyword.ozi-work",
-                "variable.language.ozi-work"
-              ],
-              "settings": {
-                "foreground": "#9ecbff"
-              }
-            },
-            {
-              "scope": "keyword.other.password.ozi-work",
-              "settings": {
-                "foreground": "#ff5555",
-                "fontStyle": "bold"
-              }
-            },
-            {
-              "scope": "constant.language.uuid.ozi-work",
-              "settings": {
-                "foreground": "#a4f5f8"
-              }
-            },
-            {
-              "scope": "entity.name.label.ozi-work",
-              "settings": {
-                "foreground": "#cd9b6a"
-              }
-            },
-            {
-              "scope": "markup.list.bullet.ozi-work",
-              "settings": {
-                "foreground": "#e5c07b"
-              }
-            }
-          ]
-        }
+        ]
       }
     }
   },
