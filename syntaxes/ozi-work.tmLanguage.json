@@ -3,21 +3,47 @@
   "name": "ozi-work",
   "scopeName": "source.ozi-work",
   "patterns": [
-    { "include": "#comments" },
-    { "include": "#uuid" },
-    { "include": "#strings" },
-    { "include": "#numbers" },
-    { "include": "#emails" },
-    { "include": "#booleans" },
-    { "include": "#statuses" },
-    { "include": "#abbreviations" },
-    { "include": "#tags" },
-    { "include": "#passwordPattern" },
-    { "include": "#punctuation" },
-    { "include": "#violet" },
-    { "include": "#entity" }
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#uuid"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#numbers"
+    },
+    {
+      "include": "#emails"
+    },
+    {
+      "include": "#booleans"
+    },
+    {
+      "include": "#statuses"
+    },
+    {
+      "include": "#abbreviations"
+    },
+    {
+      "include": "#tags"
+    },
+    {
+      "include": "#passwordPattern"
+    },
+    {
+      "include": "#punctuation"
+    },
+    {
+      "include": "#violet"
+    },
+    {
+      "include": "#entity"
+    }
   ],
-  "repository": {    
+  "repository": {
     "comments": {
       "patterns": [
         {
@@ -130,7 +156,7 @@
       "patterns": [
         {
           "name": "constant.language.abbreviation.ozi-work",
-          "match": "(?i)\\b(violet|run|if|else|alcon)\\b"
+          "match": "(?i)\\b(violet|run|if|else|alcon|cp|mv|tf|npm)\\b"
         }
       ]
     },
@@ -138,7 +164,7 @@
       "patterns": [
         {
           "name": "constant.language.abbreviation.ozi-work",
-          "match": "\\b[A-Z\\d]{2,}\\b"
+          "match": "\\b([A-Z\\d]{2,}|[\\w.]*_[\\w.]*)\\b"
         }
       ]
     },

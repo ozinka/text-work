@@ -1,0 +1,3 @@
+vsce package
+code --uninstall-extension ozi-dev.ozi-highlighting
+code --install-extension ozi-highlighting-0.0.1.vsix

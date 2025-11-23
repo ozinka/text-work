@@ -16,7 +16,6 @@ function insertDateTimeLine(editor, { before = false } = {}) {
     editBuilder.insert(cursorPos, textToInsert);
   }).then(() => {
     if (before) {
-      // якщо вставляємо перед курсором, зміщуємо його на рядок вгору
       const newPos = new vscode.Position(cursorPos.line, cursorPos.character);
       editor.selection = new vscode.Selection(newPos, newPos);
       editor.revealRange(new vscode.Range(newPos, newPos));
@@ -36,6 +35,6 @@ function activate(context) {
   );
 }
 
-function deactivate() {}
+function deactivate() { }
 
 module.exports = { activate, deactivate };
