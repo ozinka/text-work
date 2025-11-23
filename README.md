@@ -20,9 +20,18 @@ Automatically manages lists when you press `Enter`:
 - `• text` -> continues with `• `
 - `- text` -> continues with `- `
 - `1. text` -> continues with `2. ` (increments numbers)
+- `a. text` -> continues with `b. ` (increments letters)
+- `i. text` -> continues with `ii. ` (increments Roman numerals)
 - Pressing `Enter` on an empty list item clears the line.
 
-### 3. Date/Time Insertion
+### 3. Smart Indentation (Tab/Shift+Tab)
+- **Tab**: Indents and cycles list type (`1.` -> `a.` -> `i.`).
+- **Shift+Tab**: Outdents and intelligently determines the next bullet based on context (e.g., outdenting from `a.` under `1.` becomes `2.`).
+
+### 4. Bullet Highlighting
+Bullets (`-`, `•`, `1.`, `a.`, `i.`) are highlighted distinctly to improve readability.
+
+### 5. Date/Time Insertion
 - **Alt+Enter**: Insert current date/time separator line *after* the cursor.
 - **Shift+Alt+Enter**: Insert current date/time separator line *before* the cursor.
 

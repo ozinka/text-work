@@ -4,6 +4,9 @@
   "scopeName": "source.ozi-work",
   "patterns": [
     {
+      "include": "#bullets"
+    },
+    {
       "include": "#comments"
     },
     {
@@ -161,6 +164,14 @@
         {
           "name": "constant.language.abbreviation.ozi-work",
           "match": "(?i)\\b(violet|run|if|else|install)\\b"
+        }
+      ]
+    },
+    "bullets": {
+      "patterns": [
+        {
+          "match": "^(\\s*)([\\*\\-•▪▫◦‣⁃]\\s|\\d+\\.\\s|[a-zA-Z]\\.\\s|[ivxlcdmIVXLCDM]+\\.\\s|\\.\\s)",
+          "name": "markup.list.bullet.ozi-work"
         }
       ]
     },
