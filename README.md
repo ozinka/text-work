@@ -1,11 +1,11 @@
-# Ozi Highlighting
+# Text Work
 
-Custom highlighting and productivity tools for `.txt` files (and `ozi-work` language).
+Custom highlighting and productivity tools for `.txt` files (and `text-work` language).
 
 ## Features
 
 ### 1. Custom Highlighting
-Provides rich syntax highlighting for `.txt` files, treating them as `ozi-work` language.
+Provides rich syntax highlighting for `.txt` files, treating them as `text-work` language.
 - **Keywords**: `status`, `error`, `violet`, `run`, `if`, `else`, `install`, `cp`, `mv`, `tf`, `npm`, `npx`.
 - **UUIDs**: Automatically highlights UUIDs.
 - **Dates**: Highlights date patterns.
@@ -29,7 +29,7 @@ Automatically manages lists when you press `Enter`:
 ## Usage
 
 1. Open any `.txt` file.
-2. The language mode should automatically switch to `ozi-work` (or you can select it manually).
+2. The language mode should automatically switch to `text-work` (or you can select it manually).
 3. Enjoy the highlighting and productivity features!
 
 ## Extension Settings

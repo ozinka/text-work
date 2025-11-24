@@ -304,17 +304,17 @@ function activate(context) {
   const register = (cmd, callback) => vscode.commands.registerCommand(cmd, callback);
 
   context.subscriptions.push(
-    register('oziWork.insertDateTimeLineAfter', () => {
+    register('textWork.insertDateTimeLineAfter', () => {
       const editor = vscode.window.activeTextEditor;
       insertDateTimeLine(editor, { before: false });
     }),
-    register('oziWork.insertDateTimeLineBefore', () => {
+    register('textWork.insertDateTimeLineBefore', () => {
       const editor = vscode.window.activeTextEditor;
       insertDateTimeLine(editor, { before: true });
     }),
-    register('oziWork.onEnter', handleEnter),
-    register('oziWork.onTab', handleTab),
-    register('oziWork.onShiftTab', handleShiftTab)
+    register('textWork.onEnter', handleEnter),
+    register('textWork.onTab', handleTab),
+    register('textWork.onShiftTab', handleShiftTab)
   );
 }
 

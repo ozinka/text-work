@@ -16,11 +16,11 @@ fi
 
 # Step 2: Uninstall existing extension
 echo "🗑️  Uninstalling existing extension..."
-code --uninstall-extension ozi-dev.ozi-highlighting
+code --uninstall-extension ozi-dev.text-work
 
 # Step 3: Install the new package
 echo "⚙️  Installing new extension..."
-code --install-extension ozi-highlighting-0.0.1.vsix
+code --install-extension text-work-0.0.1.vsix
 
 if [ $? -eq 0 ]; then
     echo "✅ Extension updated successfully!"

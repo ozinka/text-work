@@ -1,6 +1,6 @@
 {
-  "name": "ozi-highlighting",
-  "displayName": "Ozi Highlighting",
+  "name": "text-work",
+  "displayName": "Text Work",
   "description": "Custom highlighting and productivity tools for .txt files",
   "version": "0.0.1",
   "publisher": "ozi-dev",
@@ -14,14 +14,14 @@
   ],
   "main": "./extension.js",
   "activationEvents": [
-    "onLanguage:ozi-work"
+    "onLanguage:text-work"
   ],
   "contributes": {
     "languages": [
       {
-        "id": "ozi-work",
+        "id": "text-work",
         "aliases": [
-          "ozi-work"
+          "text-work"
         ],
         "extensions": [
           ".txt"
@@ -31,62 +31,62 @@
     ],
     "grammars": [
       {
-        "language": "ozi-work",
-        "scopeName": "source.ozi-work",
-        "path": "./syntaxes/ozi-work.tmLanguage.json"
+        "language": "text-work",
+        "scopeName": "source.text-work",
+        "path": "./syntaxes/text-work.tmLanguage.json"
       }
     ],
     "commands": [
       {
-        "command": "oziWork.insertDateTimeLineAfter",
+        "command": "textWork.insertDateTimeLineAfter",
         "title": "Insert Date Time Line After"
       },
       {
-        "command": "oziWork.insertDateTimeLineBefore",
+        "command": "textWork.insertDateTimeLineBefore",
         "title": "Insert Date Time Line Before"
       },
       {
-        "command": "oziWork.onEnter",
+        "command": "textWork.onEnter",
         "title": "On Enter"
       },
       {
-        "command": "oziWork.onTab",
+        "command": "textWork.onTab",
         "title": "On Tab"
       },
       {
-        "command": "oziWork.onShiftTab",
+        "command": "textWork.onShiftTab",
         "title": "On Shift Tab"
       }
     ],
     "keybindings": [
       {
-        "command": "oziWork.insertDateTimeLineAfter",
+        "command": "textWork.insertDateTimeLineAfter",
         "key": "alt+enter",
         "when": "editorTextFocus"
       },
       {
-        "command": "oziWork.insertDateTimeLineBefore",
+        "command": "textWork.insertDateTimeLineBefore",
         "key": "shift+alt+enter",
         "when": "editorTextFocus"
       },
       {
-        "command": "oziWork.onEnter",
+        "command": "textWork.onEnter",
         "key": "enter",
-        "when": "editorTextFocus && editorLangId == ozi-work && !suggestWidgetVisible"
+        "when": "editorTextFocus && editorLangId == text-work && !suggestWidgetVisible"
       },
       {
-        "command": "oziWork.onTab",
+        "command": "textWork.onTab",
         "key": "tab",
-        "when": "editorTextFocus && editorLangId == ozi-work && !suggestWidgetVisible && !inSnippetMode"
+        "when": "editorTextFocus && editorLangId == text-work && !suggestWidgetVisible && !inSnippetMode"
       },
       {
-        "command": "oziWork.onShiftTab",
+        "command": "textWork.onShiftTab",
         "key": "shift+tab",
-        "when": "editorTextFocus && editorLangId == ozi-work && !suggestWidgetVisible && !inSnippetMode"
+        "when": "editorTextFocus && editorLangId == text-work && !suggestWidgetVisible && !inSnippetMode"
       }
     ],
     "configurationDefaults": {
-      "[ozi-work]": {
+      "[text-work]": {
         "editor.quickSuggestions": false,
         "editor.suggestOnTriggerCharacters": false,
         "editor.parameterHints.enabled": false,
@@ -131,63 +131,63 @@
       "editor.tokenColorCustomizations": {
         "textMateRules": [
           {
-            "name": "[ozi-work] Markdown headings",
+            "name": "[text-work] Markdown headings",
             "scope": "entity.name.section.markdown",
             "settings": {
               "foreground": "#e06c75"
             }
           },
           {
-            "name": "[ozi-work] Markdown heading Punctuation Definition",
+            "name": "[text-work] Markdown heading Punctuation Definition",
             "scope": "punctuation.definition.heading.markdown",
             "settings": {
               "foreground": "#e06c75"
             }
           },
           {
-            "name": "[ozi-work] Markdown heading setext",
+            "name": "[text-work] Markdown heading setext",
             "scope": "markup.heading.setext",
             "settings": {
               "foreground": "#abb2bf"
             }
           },
           {
-            "name": "[ozi-work] Markdown Punctuation Definition Bold",
+            "name": "[text-work] Markdown Punctuation Definition Bold",
             "scope": "punctuation.definition.bold.markdown",
             "settings": {
               "foreground": "#d19a66"
             }
           },
           {
-            "name": "[ozi-work] Markdown Inline Raw",
+            "name": "[text-work] Markdown Inline Raw",
             "scope": "markup.inline.raw.markdown",
             "settings": {
               "foreground": "#98c379"
             }
           },
           {
-            "name": "[ozi-work] Markdown Inline Raw",
+            "name": "[text-work] Markdown Inline Raw",
             "scope": "markup.inline.raw.string.markdown",
             "settings": {
               "foreground": "#98c379"
             }
           },
           {
-            "name": "[ozi-work] Markdown Inline Raw punctuation",
+            "name": "[text-work] Markdown Inline Raw punctuation",
             "scope": "punctuation.definition.raw.markdown",
             "settings": {
               "foreground": "#e5c07b"
             }
           },
           {
-            "name": "[ozi-work] Markdown List Punctuation Definition",
+            "name": "[text-work] Markdown List Punctuation Definition",
             "scope": "punctuation.definition.list.markdown",
             "settings": {
               "foreground": "#e5c07b"
             }
           },
           {
-            "name": "[ozi-work] Markdown Punctuation Definition String",
+            "name": "[text-work] Markdown Punctuation Definition String",
             "scope": [
               "punctuation.definition.string.begin.markdown",
               "punctuation.definition.string.end.markdown",
@@ -198,92 +198,92 @@
             }
           },
           {
-            "name": "[ozi-work] Markdown Punctuation Definition Link",
+            "name": "[text-work] Markdown Punctuation Definition Link",
             "scope": "punctuation.definition.metadata.markdown",
             "settings": {
               "foreground": "#e06c75"
             }
           },
           {
-            "name": "[ozi-work] Markdown Underline Link/Image",
+            "name": "[text-work] Markdown Underline Link/Image",
             "scope": "markup.underline.link.markdown,markup.underline.link.image.markdown",
             "settings": {
               "foreground": "#c678dd"
             }
           },
           {
-            "name": "[ozi-work] Markdown Link Title/Description",
+            "name": "[text-work] Markdown Link Title/Description",
             "scope": "string.other.link.title.markdown,string.other.link.description.markdown",
             "settings": {
               "foreground": "#61afef"
             }
           },
           {
-            "name": "[ozi-work] Asciidoc Inline Raw",
+            "name": "[text-work] Asciidoc Inline Raw",
             "scope": "markup.raw.monospace.asciidoc",
             "settings": {
               "foreground": "#98c379"
             }
           },
           {
-            "name": "[ozi-work] Asciidoc Inline Raw Punctuation Definition",
+            "name": "[text-work] Asciidoc Inline Raw Punctuation Definition",
             "scope": "punctuation.definition.asciidoc",
             "settings": {
               "foreground": "#e5c07b"
             }
           },
           {
-            "name": "[ozi-work] Asciidoc List Punctuation Definition",
+            "name": "[text-work] Asciidoc List Punctuation Definition",
             "scope": "markup.list.asciidoc",
             "settings": {
               "foreground": "#e5c07b"
             }
           },
           {
-            "name": "[ozi-work] Asciidoc underline link",
+            "name": "[text-work] Asciidoc underline link",
             "scope": "markup.link.asciidoc,markup.other.url.asciidoc",
             "settings": {
               "foreground": "#c678dd"
             }
           },
           {
-            "name": "[ozi-work] Asciidoc link name",
+            "name": "[text-work] Asciidoc link name",
             "scope": "string.unquoted.asciidoc,markup.other.url.asciidoc",
             "settings": {
               "foreground": "#61afef"
             }
           },
           {
-            "name": "[ozi-work] JSON Property Name",
+            "name": "[text-work] JSON Property Name",
             "scope": "support.type.property-name.json",
             "settings": {
               "foreground": "#e06c75"
             }
           },
           {
-            "name": "[ozi-work] JSON Punctuation for Property Name",
+            "name": "[text-work] JSON Punctuation for Property Name",
             "scope": "support.type.property-name.json punctuation",
             "settings": {
               "foreground": "#e06c75"
             }
           },
           {
-            "name": "[ozi-work] Markdown Quote",
+            "name": "[text-work] Markdown Quote",
             "scope": "markup.quote.markdown",
             "settings": {
               "foreground": "#5c6370"
             }
           },
           {
-            "scope": "source.ozi-work",
+            "scope": "source.text-work",
             "settings": {
               "foreground": "#e0e0e0"
             }
           },
           {
             "scope": [
-              "comment.line.double-slash.ozi-work",
-              "comment.line.double-dash.ozi-work"
+              "comment.line.double-slash.text-work",
+              "comment.line.double-dash.text-work"
             ],
             "settings": {
               "foreground": "#7a7a7a",
@@ -291,28 +291,28 @@
             }
           },
           {
-            "scope": "string.quoted.double.ozi-work",
+            "scope": "string.quoted.double.text-work",
             "settings": {
               "foreground": "#b7cfa0"
             }
           },
           {
-            "scope": "markup.underline.link.email.ozi-work",
+            "scope": "markup.underline.link.email.text-work",
             "settings": {
               "foreground": "#61afef",
               "fontStyle": "underline"
             }
           },
           {
-            "scope": "constant.numeric.ozi-work",
+            "scope": "constant.numeric.text-work",
             "settings": {
               "foreground": "#8f87fd"
             }
           },
           {
             "scope": [
-              "constant.language.boolean.true.ozi-work",
-              "constant.language.boolean.true.ozi-work .constant.language.boolean.true.ozi-work"
+              "constant.language.boolean.true.text-work",
+              "constant.language.boolean.true.text-work .constant.language.boolean.true.text-work"
             ],
             "settings": {
               "foreground": "#6fbf6f"
@@ -320,102 +320,102 @@
           },
           {
             "scope": [
-              "constant.language.boolean.false.ozi-work",
-              "constant.language.boolean.false.ozi-work .constant.language.boolean.false.ozi-work"
+              "constant.language.boolean.false.text-work",
+              "constant.language.boolean.false.text-work .constant.language.boolean.false.text-work"
             ],
             "settings": {
               "foreground": "#d96b6b"
             }
           },
           {
-            "scope": "keyword.other.status.ozi-work",
+            "scope": "keyword.other.status.text-work",
             "settings": {
               "foreground": "#9ecbff"
             }
           },
           {
-            "scope": "constant.language.abbreviation.ozi-work",
+            "scope": "constant.language.abbreviation.text-work",
             "settings": {
               "foreground": "#d084ff"
             }
           },
           {
-            "scope": "constant.language.blue.ozi-work",
+            "scope": "constant.language.blue.text-work",
             "settings": {
               "foreground": "#8488ff"
             }
           },
           {
-            "scope": "entity.name.tag.ozi-work",
+            "scope": "entity.name.tag.text-work",
             "settings": {
               "foreground": "#e0c86b"
             }
           },
           {
-            "scope": "punctuation.symbol.ozi-work",
+            "scope": "punctuation.symbol.text-work",
             "settings": {
               "foreground": "#d7a984"
             }
           },
           {
             "scope": [
-              "keyword.control.ozi-work",
-              "keyword.ozi-work",
-              "variable.language.ozi-work"
+              "keyword.control.text-work",
+              "keyword.text-work",
+              "variable.language.text-work"
             ],
             "settings": {
               "foreground": "#9ecbff"
             }
           },
           {
-            "scope": "keyword.other.password.ozi-work",
+            "scope": "keyword.other.password.text-work",
             "settings": {
               "foreground": "#ff5555",
               "fontStyle": "bold"
             }
           },
           {
-            "scope": "constant.language.uuid.ozi-work",
+            "scope": "constant.language.uuid.text-work",
             "settings": {
               "foreground": "#a4f5f8"
             }
           },
           {
-            "scope": "entity.name.label.ozi-work",
+            "scope": "entity.name.label.text-work",
             "settings": {
               "foreground": "#cd9b6a"
             }
           },
           {
-            "scope": "markup.list.bullet.ozi-work",
+            "scope": "markup.list.bullet.text-work",
             "settings": {
               "foreground": "#ff5555"
             }
           },
           {
-            "name": "[ozi-work] Explicit Color - Violet",
-            "scope": "support.constant.color.violet.ozi-work",
+            "name": "[text-work] Explicit Color - Violet",
+            "scope": "support.constant.color.violet.text-work",
             "settings": {
               "foreground": "#de92f9"
             }
           },
           {
-            "name": "[ozi-work] Explicit Color - Red",
-            "scope": "support.constant.color.red.ozi-work",
+            "name": "[text-work] Explicit Color - Red",
+            "scope": "support.constant.color.red.text-work",
             "settings": {
               "foreground": "#ff5555"
             }
           },
           {
-            "name": "[ozi-work] Explicit Color - Green",
-            "scope": "support.constant.color.green.ozi-work",
+            "name": "[text-work] Explicit Color - Green",
+            "scope": "support.constant.color.green.text-work",
             "settings": {
               "foreground": "#55ff55"
             }
           },
           {
-            "name": "[ozi-work] Explicit Color - Yellow",
-            "scope": "support.constant.color.yellow.ozi-work",
+            "name": "[text-work] Explicit Color - Yellow",
+            "scope": "support.constant.color.yellow.text-work",
             "settings": {
               "foreground": "#ffff55"
             }
@@ -426,6 +426,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ozinka/ozi-highlighting.git"
+    "url": "https://github.com/ozinka/text-work.git"
   }
 }
