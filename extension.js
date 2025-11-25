@@ -1,9 +1,109 @@
 const vscode = require('vscode');
 
+// --- Constants ---
+
+const ROMAN_MAP = { i: 1, v: 5, x: 10, l: 50, c: 100, d: 500, m: 1000 };
+const ROMAN_VALUES = [
+  { val: 1000, sym: 'm' }, { val: 900, sym: 'cm' }, { val: 500, sym: 'd' }, { val: 400, sym: 'cd' },
+  { val: 100, sym: 'c' }, { val: 90, sym: 'xc' }, { val: 50, sym: 'l' }, { val: 40, sym: 'xl' },
+  { val: 10, sym: 'x' }, { val: 9, sym: 'ix' }, { val: 5, sym: 'v' }, { val: 4, sym: 'iv' }, { val: 1, sym: 'i' }
+];
+
+// Regex for list items:
+// Group 1: Indentation
+// Group 2: Bullet ( *, -, •, 1., a., i., etc.)
+// Group 3: Content
+const LIST_ITEM_REGEX = /^(\s*)([\*\-•▪▫◦‣⁃]|\d+\.|[ivxlcdmIVXLCDM]+\.|[a-zA-Z]+\.)\s+(.*)$/;
+
+// --- Helper Functions ---
+
+/**
+ * Formats the current date and time.
+ * @param {Date} now 
+ * @returns {string} Formatted date string (YYYY.MM.DD HH:mm)
+ */
 function formatDateTime(now = new Date()) {
   const pad = n => String(n).padStart(2, '0');
   return `${now.getFullYear()}.${pad(now.getMonth() + 1)}.${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}`;
 }
+
+/**
+ * Converts a Roman numeral string to a number.
+ * @param {string} roman 
+ * @returns {number}
+ */
+function romanToNum(roman) {
+  let num = 0;
+  for (let i = 0; i < roman.length; i++) {
+    const current = ROMAN_MAP[roman[i].toLowerCase()];
+    const next = ROMAN_MAP[roman[i + 1]?.toLowerCase()];
+    if (next > current) {
+      num += next - current;
+      i++;
+    } else {
+      num += current;
+    }
+  }
+  return num;
+}
+
+/**
+ * Converts a number to a Roman numeral string.
+ * @param {number} num 
+ * @returns {string}
+ */
+function numToRoman(num) {
+  let roman = '';
+  let n = num;
+  for (const { val, sym } of ROMAN_VALUES) {
+    while (n >= val) {
+      roman += sym;
+      n -= val;
+    }
+  }
+  return roman;
+}
+
+/**
+ * Gets the next letter in a sequence (a -> b, z -> aa).
+ * @param {string} letter 
+ * @returns {string}
+ */
+function nextLetter(letter) {
+  const code = letter.charCodeAt(0);
+  if (letter === 'z') return 'aa';
+  if (letter === 'Z') return 'AA';
+  return String.fromCharCode(code + 1);
+}
+
+/**
+ * Checks if a bullet string looks like a Roman numeral.
+ * @param {string} bullet 
+ * @returns {boolean}
+ */
+function isRomanBullet(bullet) {
+  return /^[ivxlcdmIVXLCDM]+\.$/.test(bullet);
+}
+
+/**
+ * Checks if a bullet string looks like a Letter.
+ * @param {string} bullet 
+ * @returns {boolean}
+ */
+function isLetterBullet(bullet) {
+  return /^[a-zA-Z]+\.$/.test(bullet);
+}
+
+/**
+ * Checks if a bullet string looks like a Number.
+ * @param {string} bullet 
+ * @returns {boolean}
+ */
+function isNumberBullet(bullet) {
+  return /^\d+\.$/.test(bullet);
+}
+
+// --- Command Handlers ---
 
 function insertDateTimeLine(editor, { before = false } = {}) {
   if (!editor) return;
@@ -23,48 +123,6 @@ function insertDateTimeLine(editor, { before = false } = {}) {
   });
 }
 
-// Helper functions for list logic
-function romanToNum(roman) {
-  const map = { i: 1, v: 5, x: 10, l: 50, c: 100, d: 500, m: 1000 };
-  let num = 0;
-  for (let i = 0; i < roman.length; i++) {
-    const current = map[roman[i].toLowerCase()];
-    const next = map[roman[i + 1]?.toLowerCase()];
-    if (next > current) {
-      num += next - current;
-      i++;
-    } else {
-      num += current;
-    }
-  }
-  return num;
-}
-
-function numToRoman(num) {
-  const map = [
-    { val: 1000, sym: 'm' }, { val: 900, sym: 'cm' }, { val: 500, sym: 'd' }, { val: 400, sym: 'cd' },
-    { val: 100, sym: 'c' }, { val: 90, sym: 'xc' }, { val: 50, sym: 'l' }, { val: 40, sym: 'xl' },
-    { val: 10, sym: 'x' }, { val: 9, sym: 'ix' }, { val: 5, sym: 'v' }, { val: 4, sym: 'iv' }, { val: 1, sym: 'i' }
-  ];
-  let roman = '';
-  for (const { val, sym } of map) {
-    while (num >= val) {
-      roman += sym;
-      num -= val;
-    }
-  }
-  return roman;
-}
-
-function nextLetter(letter) {
-  const code = letter.charCodeAt(0);
-  // Handle z -> aa is complex, sticking to simple cycling or just z->a for now, or just increment char code
-  // User example: a -> b. Let's assume simple a-z.
-  if (letter === 'z') return 'aa'; // Simple overflow handling
-  if (letter === 'Z') return 'AA';
-  return String.fromCharCode(code + 1);
-}
-
 function handleEnter() {
   const editor = vscode.window.activeTextEditor;
   if (!editor) return;
@@ -72,18 +130,16 @@ function handleEnter() {
   const position = editor.selection.active;
   const line = editor.document.lineAt(position.line);
   const text = line.text;
-
-  // Updated regex to prioritize Roman numerals in matching group (though logic handles disambiguation)
-  const regex = /^(\s*)([\*\-•]|\d+\.|[ivxlcdmIVXLCDM]+\.|[a-zA-Z]+\.)\s+(.*)$/;
-  const match = text.match(regex);
+  const match = text.match(LIST_ITEM_REGEX);
 
   if (!match) {
     vscode.commands.executeCommand('type', { source: 'keyboard', text: '\n' });
     return;
   }
 
-  const [fullMatch, indent, bullet, content] = match;
+  const [_, indent, bullet, content] = match;
 
+  // If line is empty (just bullet), remove bullet and new line
   if (content.trim().length === 0) {
     editor.edit(editBuilder => {
       editBuilder.replace(line.range, '');
@@ -95,6 +151,7 @@ function handleEnter() {
   let newBullet = bullet;
   let currentLineReplacement = null;
 
+  // Handle standard bullets
   if (bullet === '*') {
     newBullet = '•';
     const bulletIndex = text.indexOf('*');
@@ -106,33 +163,26 @@ function handleEnter() {
       currentLineReplacement = { range: bulletRange, text: '•' };
     }
   } else if (['-', '•', '▪', '▫', '◦', '‣', '⁃'].includes(bullet)) {
-    // Keep the same bullet
     newBullet = bullet;
-  } else if (/^\d+\.$/.test(bullet)) {
+  } else if (isNumberBullet(bullet)) {
     const num = parseInt(bullet.slice(0, -1));
     newBullet = `${num + 1}.`;
   } else {
-    // Handle Letter vs Roman ambiguity
-    let isRoman = false;
+    // Handle ambiguous Letter vs Roman
+    let isRoman = isRomanBullet(bullet);
 
-    // Check if it looks like Roman
-    if (/^[ivxlcdmIVXLCDM]+\.$/.test(bullet)) {
-      isRoman = true;
-      // Disambiguate single letters that could be both (i, v, x, l, c, d, m)
-      // We assume c, d, l, m are usually Letters in outlines unless context says otherwise
-      // We assume i, v, x are usually Roman in outlines unless context says otherwise
-      if (/^[cdlmCDLM]\.$/.test(bullet)) {
-        isRoman = false;
-      }
+    // Disambiguate single letters: c, d, l, m are usually letters; i, v, x usually Roman
+    if (isRoman && /^[cdlmCDLM]\.$/.test(bullet)) {
+      isRoman = false;
     }
 
-    // Context check
+    // Context check from previous lines
     const targetIndentLen = indent.length;
     let contextBullet = null;
     for (let i = position.line - 1; i >= 0; i--) {
       const prevLine = editor.document.lineAt(i);
       if (prevLine.isEmptyOrWhitespace) continue;
-      const prevMatch = prevLine.text.match(/^(\s*)([\*\-•]|\d+\.|[ivxlcdmIVXLCDM]+\.|[a-zA-Z]+\.)\s+(.*)$/);
+      const prevMatch = prevLine.text.match(LIST_ITEM_REGEX);
       if (prevMatch) {
         const [_, prevIndent, prevBullet] = prevMatch;
         if (prevIndent.length === targetIndentLen) {
@@ -144,15 +194,12 @@ function handleEnter() {
     }
 
     if (contextBullet) {
-      // If context was Roman, we should probably be Roman
-      if (/^[ivxlcdmIVXLCDM]+\.$/.test(contextBullet) && !/^[cdlmCDLM]\.$/.test(contextBullet)) {
-        // Check if current bullet is next Roman of context
+      if (isRomanBullet(contextBullet) && !/^[cdlmCDLM]\.$/.test(contextBullet)) {
         const prevRoman = romanToNum(contextBullet.slice(0, -1));
         const currRoman = romanToNum(bullet.slice(0, -1));
         if (currRoman === prevRoman + 1) isRoman = true;
       }
-      // If context was Letter, we should probably be Letter
-      if (/^[a-zA-Z]\.$/.test(contextBullet)) {
+      if (isLetterBullet(contextBullet)) {
         const prevCode = contextBullet.charCodeAt(0);
         const currCode = bullet.charCodeAt(0);
         if (currCode === prevCode + 1) isRoman = false;
@@ -167,7 +214,6 @@ function handleEnter() {
         newBullet = newBullet.toUpperCase();
       }
     } else {
-      // Treat as Letter
       const letter = bullet.slice(0, -1);
       newBullet = `${nextLetter(letter)}.`;
     }
@@ -190,27 +236,30 @@ function handleTab() {
   const position = editor.selection.active;
   const line = editor.document.lineAt(position.line);
   const text = line.text;
-
-  const regex = /^(\s*)([\*\-•]|\d+\.|[a-zA-Z]\.|[ivxlcdmIVXLCDM]+\.)\s+(.*)$/;
-  const match = text.match(regex);
+  const match = text.match(LIST_ITEM_REGEX);
 
   if (!match) {
     vscode.commands.executeCommand('tab');
     return;
   }
 
-  const [fullMatch, indent, bullet, content] = match;
+  const [_, indent, bullet, content] = match;
   let newBullet = bullet;
 
-  if (/^\d+\.$/.test(bullet)) {
+  // Cycle bullet type on indent
+  if (isNumberBullet(bullet)) {
     newBullet = 'a.';
-  } else if (/^[a-zA-Z]\.$/.test(bullet)) {
+  } else if (isLetterBullet(bullet)) {
     newBullet = 'i.';
-  } else if (/^[ivxlcdmIVXLCDM]+\.$/.test(bullet)) {
+  } else if (isRomanBullet(bullet)) {
     newBullet = '1.';
   }
 
-  const newText = `    ${indent}${newBullet} ${content}`;
+  // Get user's tab size preference
+  const tabSize = editor.options.tabSize || 4;
+  const indentString = ' '.repeat(tabSize);
+
+  const newText = `${indentString}${indent}${newBullet} ${content}`;
 
   editor.edit(editBuilder => {
     editBuilder.replace(line.range, newText);
@@ -224,55 +273,51 @@ function handleShiftTab() {
   const position = editor.selection.active;
   const line = editor.document.lineAt(position.line);
   const text = line.text;
-
-  const regex = /^(\s*)([\*\-•]|\d+\.|[a-zA-Z]\.|[ivxlcdmIVXLCDM]+\.)\s+(.*)$/;
-  const match = text.match(regex);
+  const match = text.match(LIST_ITEM_REGEX);
 
   if (!match) {
     vscode.commands.executeCommand('outdent');
     return;
   }
 
-  const [fullMatch, indent, bullet, content] = match;
+  const [_, indent, bullet, content] = match;
+  const tabSize = editor.options.tabSize || 4;
 
-  if (indent.length < 4) {
+  if (indent.length < tabSize) {
     vscode.commands.executeCommand('outdent');
     return;
   }
 
   // Smart outdent: look for context
-  const targetIndentLen = indent.length - 4;
+  const targetIndentLen = indent.length - tabSize;
   let contextBullet = null;
 
   for (let i = position.line - 1; i >= 0; i--) {
     const prevLine = editor.document.lineAt(i);
     if (prevLine.isEmptyOrWhitespace) continue;
 
-    const prevMatch = prevLine.text.match(/^(\s*)([\*\-•]|\d+\.|[a-zA-Z]\.|[ivxlcdmIVXLCDM]+\.)\s+(.*)$/);
+    const prevMatch = prevLine.text.match(LIST_ITEM_REGEX);
     if (prevMatch) {
       const [_, prevIndent, prevBullet] = prevMatch;
       if (prevIndent.length === targetIndentLen) {
         contextBullet = prevBullet;
         break;
       }
-      if (prevIndent.length < targetIndentLen) {
-        // We went too far up, stop searching
-        break;
-      }
+      if (prevIndent.length < targetIndentLen) break;
     }
   }
 
   let newBullet = bullet;
 
   if (contextBullet) {
-    // Increment context bullet
-    if (/^\d+\.$/.test(contextBullet)) {
+    // Increment context bullet to guess next logical bullet
+    if (isNumberBullet(contextBullet)) {
       const num = parseInt(contextBullet.slice(0, -1));
       newBullet = `${num + 1}.`;
-    } else if (/^[a-zA-Z]\.$/.test(contextBullet)) {
+    } else if (isLetterBullet(contextBullet)) {
       const letter = contextBullet.slice(0, -1);
       newBullet = `${nextLetter(letter)}.`;
-    } else if (/^[ivxlcdmIVXLCDM]+\.$/.test(contextBullet)) {
+    } else if (isRomanBullet(contextBullet)) {
       const roman = contextBullet.slice(0, -1);
       const num = romanToNum(roman);
       newBullet = `${numToRoman(num + 1)}.`;
@@ -281,18 +326,17 @@ function handleShiftTab() {
       }
     }
   } else {
-    // Fallback to cycle logic if no context found
-    if (/^\d+\.$/.test(bullet)) {
+    // Fallback cycle logic
+    if (isNumberBullet(bullet)) {
       newBullet = 'i.';
-    } else if (/^[a-zA-Z]\.$/.test(bullet)) {
+    } else if (isLetterBullet(bullet)) {
       newBullet = '1.';
-    } else if (/^[ivxlcdmIVXLCDM]+\.$/.test(bullet)) {
+    } else if (isRomanBullet(bullet)) {
       newBullet = 'a.';
     }
   }
 
-  // Remove 4 spaces from indentation
-  const newIndent = indent.substring(4);
+  const newIndent = indent.substring(tabSize);
   const newText = `${newIndent}${newBullet} ${content}`;
 
   editor.edit(editBuilder => {
@@ -300,17 +344,17 @@ function handleShiftTab() {
   });
 }
 
+// --- Extension Activation ---
+
 function activate(context) {
   const register = (cmd, callback) => vscode.commands.registerCommand(cmd, callback);
 
   context.subscriptions.push(
     register('textWork.insertDateTimeLineAfter', () => {
-      const editor = vscode.window.activeTextEditor;
-      insertDateTimeLine(editor, { before: false });
+      insertDateTimeLine(vscode.window.activeTextEditor, { before: false });
     }),
     register('textWork.insertDateTimeLineBefore', () => {
-      const editor = vscode.window.activeTextEditor;
-      insertDateTimeLine(editor, { before: true });
+      insertDateTimeLine(vscode.window.activeTextEditor, { before: true });
     }),
     register('textWork.onEnter', handleEnter),
     register('textWork.onTab', handleTab),

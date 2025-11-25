@@ -72,12 +72,12 @@
       {
         "command": "textWork.onEnter",
         "key": "enter",
-        "when": "editorTextFocus && editorLangId == text-work && !suggestWidgetVisible"
+        "when": "editorTextFocus && editorLangId == text-work && !suggestWidgetVisible && !inlineSuggestionVisible"
       },
       {
         "command": "textWork.onTab",
         "key": "tab",
-        "when": "editorTextFocus && editorLangId == text-work && !suggestWidgetVisible && !inSnippetMode"
+        "when": "editorTextFocus && editorLangId == text-work && !suggestWidgetVisible && !inSnippetMode && !inlineSuggestionVisible"
       },
       {
         "command": "textWork.onShiftTab",
