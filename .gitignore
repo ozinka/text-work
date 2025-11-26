@@ -1,2 +1,7 @@
 test.txt
 *.vsix
+
+.DS_Store
+test.txt
+
+.vscode
