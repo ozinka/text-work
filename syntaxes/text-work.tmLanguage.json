@@ -1,0 +1,242 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "text-work",
+  "scopeName": "source.text-work",
+  "patterns": [
+    {
+      "include": "#colors"
+    },
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#passwordPattern"
+    },
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#uuid"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#numbers"
+    },
+    {
+      "include": "#emails"
+    },
+    {
+      "include": "#booleans"
+    },
+    {
+      "include": "#statuses"
+    },
+    {
+      "include": "#abbreviations"
+    },
+    {
+      "include": "#tags"
+    },
+    {
+      "include": "#punctuation"
+    },
+    {
+      "include": "#bullets"
+    },
+    {
+      "include": "#entity"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.double-slash.text-work",
+          "match": "//.*$"
+        },
+        {
+          "name": "comment.line.double-dash.text-work",
+          "match": "--.*$"
+        }
+      ]
+    },
+    "uuid": {
+      "patterns": [
+        {
+          "name": "constant.language.uuid.text-work",
+          "match": "\\b[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}\\b"
+        }
+      ]
+    },
+    "emails": {
+      "patterns": [
+        {
+          "name": "markup.underline.link.email.text-work",
+          "match": "\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(?:\\.[A-Za-z0-9-]+)*\\.[A-Za-z]{2,}\\b"
+        },
+        {
+          "name": "markup.underline.link.http.text-work",
+          "match": "\\bhttps?://[\\w\\-\\.]+(?:/[\\w\\-./?%&=]*)?\\b"
+        }
+      ]
+    },
+    "passwordPattern": {
+      "patterns": [
+        {
+          "name": "keyword.other.password.text-work",
+          "match": "\\S+(?=\\s+@pass\\b)"
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.text-work",
+          "begin": "\"",
+          "end": "\"|(?=^--- ✄)",
+          "patterns": [
+            {
+              "include": "#emails"
+            },
+            {
+              "name": "constant.character.escape.text-work",
+              "match": "\\\\."
+            }
+          ]
+        },
+        {
+          "name": "string.quoted.single.text-work",
+          "begin": "(?<!\\w)'(?!\\w)|(?<!\\w)'(?=\\s)",
+          "end": "'(?!\\w)|(?=^--- ✄)",
+          "patterns": [
+            {
+              "include": "#emails"
+            },
+            {
+              "name": "constant.character.escape.text-work",
+              "match": "\\\\."
+            }
+          ]
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.text-work",
+          "match": "\\b[0-9]+(\\.[0-9]+)?\\b"
+        }
+      ]
+    },
+    "booleans": {
+      "patterns": [
+        {
+          "name": "constant.language.boolean.true.text-work",
+          "match": "(?i)\\b(true|ok|good|done|passed|eligible|yes)\\b"
+        },
+        {
+          "name": "constant.language.boolean.false.text-work",
+          "match": "(?i)\\b(false|fail|failed|error|no|not\\s+eligible)\\b"
+        }
+      ]
+    },
+    "statuses": {
+      "patterns": [
+        {
+          "name": "keyword.other.status.text-work",
+          "match": "(?i)\\b(status|cp|mv|tf|npm|npx|python\\d*|terraform|echo|git|ssh)\\b"
+        }
+      ]
+    },
+    "colors": {
+      "patterns": [
+        {
+          "name": "support.constant.color.violet.text-work",
+          "match": "(?i)\\bviolet\\b"
+        },
+        {
+          "name": "support.constant.color.red.text-work",
+          "match": "(?i)\\bred\\b"
+        },
+        {
+          "name": "support.constant.color.green.text-work",
+          "match": "(?i)\\bgreen\\b"
+        },
+        {
+          "name": "support.constant.color.yellow.text-work",
+          "match": "(?i)\\byellow\\b"
+        },
+        {
+          "name": "constant.language.blue.text-work",
+          "match": "(?i)\\bblue\\b"
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.text-work",
+          "match": "(?i)\\b(if|else|run|install)\\b"
+        }
+      ]
+    },
+    "abbreviations": {
+      "patterns": [
+        {
+          "name": "constant.language.abbreviation.text-work",
+          "match": "\\b([A-Z\\d]{2,}|[\\w.]*_[\\w.]*)\\b"
+        }
+      ]
+    },
+    "tags": {
+      "patterns": [
+        {
+          "name": "entity.name.tag.text-work",
+          "match": "\\s@[A-Za-z0-9_\\-]+"
+        },
+        {
+          "name": "entity.name.tag.text-work",
+          "match": "(?i)\\b(dev)\\b"
+        },
+        {
+          "name": "entity.name.tag.text-work",
+          "match": "\\bis[A-Z][a-zA-Z]*\\b"
+        }
+      ]
+    },
+    "punctuation": {
+      "patterns": [
+        {
+          "name": "punctuation.symbol.text-work",
+          "match": "[-=\\|,.:;(){}\\[\\]\"']"
+        }
+      ]
+    },
+    "bullets": {
+      "patterns": [
+        {
+          "match": "^(\\s*)([\\*\\-•▪▫◦‣⁃]\\s|\\d+\\.\\s|[a-zA-Z]\\.\\s|[ivxlcdmIVXLCDM]+\\.\\s|\\.\\s)",
+          "captures": {
+            "2": {
+              "name": "constant.language.blue.text-work"
+            }
+          }
+        }
+      ]
+    },
+    "entity": {
+      "patterns": [
+        {
+          "name": "entity.name.label.text-work",
+          "match": "^\\s*[^:\\s][^:]*(?=:)"
+        },
+        {
+          "name": "entity.name.label.text-work",
+          "match": "(?i)\\b(warning)\\b"
+        }
+      ]
+    }
+  }
+}

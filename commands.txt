@@ -1,0 +1,4 @@
+vsce package
+code --uninstall-extension ozi-dev.ozi-highlighting
+code --uninstall-extension ozi-dev.text-work
+code --install-extension text-work-0.0.1.vsix
