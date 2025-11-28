@@ -1,0 +1,7 @@
+fonts/
+*.sfd
+*.ttf
+*.otf
+text-work-*.vsix
+.vscode/
+.DS_Store

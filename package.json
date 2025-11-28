@@ -12,7 +12,7 @@
     "Themes",
     "Other"
   ],
-  "main": "./extension.js",
+  "main": "./src/extension.js",
   "activationEvents": [
     "onLanguage:text-work"
   ],
