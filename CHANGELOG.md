@@ -6,6 +6,7 @@ All notable changes to the "text-work" extension will be documented in this file
 
 ### Fixed
 - Fixed CI pipeline failure by ensuring `package-lock.json` is correctly tracked and updated.
+- Updated CI workflow to use Node.js 20 to resolve `vsce` compatibility issues.
 
 ## [0.0.2] – Font masking support and project cleanup
 
