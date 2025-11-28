@@ -2,8 +2,8 @@
   "name": "text-work",
   "displayName": "Text Work",
   "description": "Custom highlighting and productivity tools for .txt files",
-  "version": "0.0.1",
-  "publisher": "ozi-dev",
+  "version": "0.0.2",
+  "publisher": "ozinka",
   "engines": {
     "vscode": "^1.105.0"
   },
@@ -12,7 +12,7 @@
     "Themes",
     "Other"
   ],
-  "main": "./extension.js",
+  "main": "./src/extension.js",
   "activationEvents": [
     "onLanguage:text-work"
   ],
