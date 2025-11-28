@@ -2,8 +2,14 @@
 
 All notable changes to the "text-work" extension will be documented in this file.
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+## [0.0.2] – Font masking support and project cleanup
 
-## [Unreleased]
+### Added
+- Support for the custom masking font (`PasswordMask`), enabling hiding text behind asterisks using special tags.
+- Font file structure added under the `fonts/` directory (not included in the VSIX).
 
-- Initial release
+### Changed
+- Improved project organization: separated folders for `fonts/`, `syntaxes/`, and `.github/workflows`.
+
+### Removed
+- Unnecessary repository artifacts cleaned (e.g., `.DS_Store`, old VSIX files).
