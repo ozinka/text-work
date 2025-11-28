@@ -2,6 +2,11 @@
 
 All notable changes to the "text-work" extension will be documented in this file.
 
+## [0.0.3] – CI Pipeline Fix
+
+### Fixed
+- Fixed CI pipeline failure by ensuring `package-lock.json` is correctly tracked and updated.
+
 ## [0.0.2] – Font masking support and project cleanup
 
 ### Added
