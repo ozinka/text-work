@@ -134,11 +134,11 @@
       "patterns": [
         {
           "name": "constant.language.boolean.true.text-work",
-          "match": "(?i)\\b(true|ok|good|done|passed|eligible|yes)\\b"
+          "match": "(?i)\\b(true|ok|good|done|passed|eligible|yes|DONE|OK|GOOD|YES|TRUE)\\b"
         },
         {
           "name": "constant.language.boolean.false.text-work",
-          "match": "(?i)\\b(false|fail|failed|error|no|not\\s+eligible)\\b"
+          "match": "(?i)\\b(false|FALSE|fail|failed|error|no|not\\s+eligible)\\b"
         }
       ]
     },
