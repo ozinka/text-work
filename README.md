@@ -2,6 +2,8 @@
 
 Do you work with text a lot? Do you want to highlight even txt files? This extension provides custom highlighting and productivity tools for `.txt` files (and `text-work` language).
 
+![Example](example.webp)
+
 ## Features
 
 ### 1. Custom Highlighting

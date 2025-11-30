@@ -2,7 +2,7 @@
   "name": "text-work",
   "displayName": "Text Work",
   "description": "Custom highlighting and productivity tools for .txt files",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "publisher": "ozinka",
   "engines": {
     "vscode": "^1.105.0"
