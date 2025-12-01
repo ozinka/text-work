@@ -2,7 +2,8 @@
   "name": "text-work",
   "displayName": "Text Work",
   "description": "Custom highlighting and productivity tools for .txt files",
-  "version": "0.0.6",
+  "version": "0.0.7",
+  "icon": "imgs/icon.png",
   "publisher": "ozinka",
   "engines": {
     "vscode": "^1.105.0"
