@@ -2,6 +2,17 @@
 
 All notable changes to the "text-work" extension will be documented in this file.
 
+## [0.0.7] – Keywords, Password Masking, and Release Automation
+
+### Added
+- **Syntax Highlighting**:
+    - Added highlighting for **weekdays** (e.g., Monday, Tuesday).
+    - Added highlighting for **month names** (e.g., January, February). 
+    - **Password Masking**: Special highlighting to mask passwords when using specific keywords.
+- **CI/CD Automation**:
+    - Introduced **Dev Release** pipeline: Automatically creates pre-releases for every commit to the `Dev` branch.
+    - Updated **Publish** pipeline: Now creates official GitHub Releases (with VSIX assets) alongside Marketplace publication when pushing to `main`.
+
 ## [0.0.3] – CI Pipeline Fix
 
 ### Fixed

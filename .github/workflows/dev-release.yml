@@ -1,0 +1,44 @@
+name: Dev Release
+
+on:
+  push:
+    branches:
+      - dev
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install vsce
+        run: npm install -g vsce
+
+      - name: Get Version
+        id: version
+        run: |
+          VERSION=$(node -p 'require("./package.json").version')
+          echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Package extension
+        run: vsce package
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ steps.version.outputs.VERSION }}-dev-${{ github.run_number }}
+          name: Dev Release ${{ steps.version.outputs.VERSION }} (Build ${{ github.run_number }})
+          prerelease: true
+          files: '*.vsix'
