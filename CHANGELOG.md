@@ -7,7 +7,7 @@ All notable changes to the "text-work" extension will be documented in this file
 ### Added
 - **Syntax Highlighting**:
     - Added highlighting for **weekdays** (e.g., Monday, Tuesday).
-    - Added highlighting for **month names** (e.g., January, February).
+    - Added highlighting for **month names** (e.g., January, February). 
     - **Password Masking**: Special highlighting to mask passwords when using specific keywords.
 - **CI/CD Automation**:
     - Introduced **Dev Release** pipeline: Automatically creates pre-releases for every commit to the `Dev` branch.
