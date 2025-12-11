@@ -19,7 +19,7 @@ const LIST_ITEM_REGEX = /^(\s*)([\*\-•▪▫◦‣⁃]|\d+\.|[ivxlcdmIVXLCDM]+
 
 /**
  * Formats the current date and time.
- * @param {Date} now 
+ * @param {Date} now
  * @returns {string} Formatted date string (YYYY.MM.DD HH:mm)
  */
 function formatDateTime(now = new Date()) {
@@ -29,7 +29,7 @@ function formatDateTime(now = new Date()) {
 
 /**
  * Converts a Roman numeral string to a number.
- * @param {string} roman 
+ * @param {string} roman
  * @returns {number}
  */
 function romanToNum(roman) {
@@ -49,7 +49,7 @@ function romanToNum(roman) {
 
 /**
  * Converts a number to a Roman numeral string.
- * @param {number} num 
+ * @param {number} num
  * @returns {string}
  */
 function numToRoman(num) {
@@ -66,7 +66,7 @@ function numToRoman(num) {
 
 /**
  * Gets the next letter in a sequence (a -> b, z -> aa).
- * @param {string} letter 
+ * @param {string} letter
  * @returns {string}
  */
 function nextLetter(letter) {
@@ -78,7 +78,7 @@ function nextLetter(letter) {
 
 /**
  * Checks if a bullet string looks like a Roman numeral.
- * @param {string} bullet 
+ * @param {string} bullet
  * @returns {boolean}
  */
 function isRomanBullet(bullet) {
@@ -87,7 +87,7 @@ function isRomanBullet(bullet) {
 
 /**
  * Checks if a bullet string looks like a Letter.
- * @param {string} bullet 
+ * @param {string} bullet
  * @returns {boolean}
  */
 function isLetterBullet(bullet) {
@@ -96,7 +96,7 @@ function isLetterBullet(bullet) {
 
 /**
  * Checks if a bullet string looks like a Number.
- * @param {string} bullet 
+ * @param {string} bullet
  * @returns {boolean}
  */
 function isNumberBullet(bullet) {
@@ -247,12 +247,15 @@ function handleTab() {
   let newBullet = bullet;
 
   // Cycle bullet type on indent
+  // Priority: Number -> Letter -> Roman -> Number
   if (isNumberBullet(bullet)) {
     newBullet = 'a.';
-  } else if (isLetterBullet(bullet)) {
-    newBullet = 'i.';
-  } else if (isRomanBullet(bullet)) {
+  } else if (isRomanBullet(bullet) && !/^[cdlmCDLM]\.$/.test(bullet)) {
+    // Treat 'i.', 'v.', 'x.' as Roman strictly in this context
     newBullet = '1.';
+  } else if (isLetterBullet(bullet)) {
+    // If it's a letter (including 'c', 'd', 'l', 'm'), switch to Roman
+    newBullet = 'i.';
   }
 
   // Get user's tab size preference
@@ -318,6 +321,7 @@ function handleShiftTab() {
       const letter = contextBullet.slice(0, -1);
       newBullet = `${nextLetter(letter)}.`;
     } else if (isRomanBullet(contextBullet)) {
+      // Logic from handleEnter: check ambiguity again or context
       const roman = contextBullet.slice(0, -1);
       const num = romanToNum(roman);
       newBullet = `${numToRoman(num + 1)}.`;
@@ -326,13 +330,13 @@ function handleShiftTab() {
       }
     }
   } else {
-    // Fallback cycle logic
+    // Fallback cycle logic: Number <- Letter <- Roman <- Number
     if (isNumberBullet(bullet)) {
       newBullet = 'i.';
+    } else if (isRomanBullet(bullet) && !/^[cdlmCDLM]\.$/.test(bullet)) {
+      newBullet = 'a.';
     } else if (isLetterBullet(bullet)) {
       newBullet = '1.';
-    } else if (isRomanBullet(bullet)) {
-      newBullet = 'a.';
     }
   }
 

@@ -2,7 +2,7 @@
   "name": "text-work",
   "displayName": "Text Work",
   "description": "Custom highlighting and productivity tools for .txt files",
-  "version": "0.0.8",
+  "version": "0.0.10",
   "icon": "imgs/icon.png",
   "publisher": "ozinka",
   "engines": {
@@ -73,7 +73,7 @@
       {
         "command": "textWork.onEnter",
         "key": "enter",
-        "when": "editorTextFocus && editorLangId == text-work && !suggestWidgetVisible && !inlineSuggestionVisible"
+        "when": "editorTextFocus && editorLangId == text-work"
       },
       {
         "command": "textWork.onTab",
