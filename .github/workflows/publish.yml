@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write
+
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -29,6 +32,12 @@ jobs:
           echo "name: $(node -p 'require("./package.json").name')"
           echo "version: $(node -p 'require("./package.json").version')"
 
+      - name: Get Version
+        id: version
+        run: |
+          VERSION=$(node -p 'require("./package.json").version')
+          echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
+
       # optionally create .vsix for inspection
       - name: Package extension (.vsix)
         run: vsce package
@@ -39,3 +48,12 @@ jobs:
         run: |
           # publish using PAT from secrets; fails if version already exists
           vsce publish -p "$VSCE_PAT"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ steps.version.outputs.VERSION }}
+          name: Release v${{ steps.version.outputs.VERSION }}
+          files: '*.vsix'
+          draft: false
+          prerelease: false
