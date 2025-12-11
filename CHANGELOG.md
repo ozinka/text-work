@@ -2,12 +2,21 @@
 
 All notable changes to the "text-work" extension will be documented in this file.
 
+## [0.0.10] – Auto-bullet Fixes
+
+### Fixed
+- **Auto-bullet Priority**: Resolved an issue where pressing `Enter` would not create a new bullet point if autocompletion or Copilot suggestions were visible. Now, `Enter` always prioritizes bullet creation in list contexts.
+- **Bullet Cycling**: Fixed the cycling behavior when indenting/outdenting bullets.
+    - `Tab`: now cycles `1.` → `a.` → `i.` → `1.` correctly (improving logical flow).
+    - `Shift+Tab`: now cycles in reverse order.
+    - Addressed an issue where cycling would get stuck or behave incorrectly on Roman numerals like `i.`.
+
 ## [0.0.7] – Keywords, Password Masking, and Release Automation
 
 ### Added
 - **Syntax Highlighting**:
     - Added highlighting for **weekdays** (e.g., Monday, Tuesday).
-    - Added highlighting for **month names** (e.g., January, February). 
+    - Added highlighting for **month names** (e.g., January, February).
     - **Password Masking**: Special highlighting to mask passwords when using specific keywords.
 - **CI/CD Automation**:
     - Introduced **Dev Release** pipeline: Automatically creates pre-releases for every commit to the `Dev` branch.
