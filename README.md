@@ -31,7 +31,8 @@ Automatically manages lists when you press `Enter`:
 - **Shift+Alt+Enter**: Insert current date/time separator line *before* the cursor.
 
 ### 4. Mask Passwords
-- Add `@pass` next to a word in a line to mask it as a password.
+Password masking works by replacing characters with asterisks using a custom font. This requires installing a font family that renders bold text as asterisks. The extension automatically applies a bold style to any word followed by `@pass`, which triggers the custom font to mask the password.
+- Add `@pass` after a word to mask it (e.g. `mySecret @pass`).
 - **Note**: PasswordMask fonts must be installed from the [fonts folder](https://github.com/ozinka/vs-text-work/tree/main/fonts). Install at least:
   - `PasswordMask-Regular.ttf`
   - `PasswordMask-Bold.ttf`

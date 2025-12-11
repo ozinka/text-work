@@ -154,11 +154,11 @@
       "patterns": [
         {
           "name": "support.constant.color.violet.text-work",
-          "match": "(?i)\\bviolet\\b"
+          "match": "(?i)\\b(violet|purple|monday|mon|tuesday|tue|wednesday|wed|thursday|thu|friday|fri|saturday|sunday)\\b"
         },
         {
           "name": "support.constant.color.red.text-work",
-          "match": "(?i)\\bred\\b"
+          "match": "(?i)\\b(red|sun|sat)\\b"
         },
         {
           "name": "support.constant.color.green.text-work",
@@ -166,11 +166,11 @@
         },
         {
           "name": "support.constant.color.yellow.text-work",
-          "match": "(?i)\\byellow|monday|mon|tuesday|tue|wednesday|wed|thursday|thu|friday|fri|saturday|sat|sunday|sun\\b"
+          "match": "(?i)\\b(yellow)\\b"
         },
         {
           "name": "constant.language.blue.text-work",
-          "match": "(?i)\\bblue|Febroray|feb|March|mar|April|apr|May|may|June|jun|July|jul|August|aug|September|sep|October|oct|November|nov|December|dec\\b"
+          "match": "(?i)\\b(blue|Febroray|feb|March|mar|April|apr|May|may|June|jun|July|jul|August|aug|September|sep|October|oct|November|nov|December|dec)\\b"
         }
       ]
     },
