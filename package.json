@@ -2,7 +2,7 @@
   "name": "text-work",
   "displayName": "Text Work",
   "description": "Custom highlighting and productivity tools for .txt files",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "icon": "imgs/icon.png",
   "publisher": "ozinka",
   "engines": {
@@ -132,293 +132,117 @@
       "editor.tokenColorCustomizations": {
         "textMateRules": [
           {
-            "name": "[text-work] Markdown headings",
-            "scope": "entity.name.section.markdown",
-            "settings": {
-              "foreground": "#e06c75"
-            }
-          },
-          {
-            "name": "[text-work] Markdown heading Punctuation Definition",
-            "scope": "punctuation.definition.heading.markdown",
-            "settings": {
-              "foreground": "#e06c75"
-            }
-          },
-          {
-            "name": "[text-work] Markdown heading setext",
-            "scope": "markup.heading.setext",
-            "settings": {
-              "foreground": "#abb2bf"
-            }
-          },
-          {
-            "name": "[text-work] Markdown Punctuation Definition Bold",
-            "scope": "punctuation.definition.bold.markdown",
-            "settings": {
-              "foreground": "#d19a66"
-            }
-          },
-          {
-            "name": "[text-work] Markdown Inline Raw",
-            "scope": "markup.inline.raw.markdown",
-            "settings": {
-              "foreground": "#98c379"
-            }
-          },
-          {
-            "name": "[text-work] Markdown Inline Raw",
-            "scope": "markup.inline.raw.string.markdown",
-            "settings": {
-              "foreground": "#98c379"
-            }
-          },
-          {
-            "name": "[text-work] Markdown Inline Raw punctuation",
-            "scope": "punctuation.definition.raw.markdown",
-            "settings": {
-              "foreground": "#e5c07b"
-            }
-          },
-          {
-            "name": "[text-work] Markdown List Punctuation Definition",
-            "scope": "punctuation.definition.list.markdown",
-            "settings": {
-              "foreground": "#e5c07b"
-            }
-          },
-          {
-            "name": "[text-work] Markdown Punctuation Definition String",
-            "scope": [
-              "punctuation.definition.string.begin.markdown",
-              "punctuation.definition.string.end.markdown",
-              "punctuation.definition.metadata.markdown"
-            ],
-            "settings": {
-              "foreground": "#e06c75"
-            }
-          },
-          {
-            "name": "[text-work] Markdown Punctuation Definition Link",
-            "scope": "punctuation.definition.metadata.markdown",
-            "settings": {
-              "foreground": "#e06c75"
-            }
-          },
-          {
-            "name": "[text-work] Markdown Underline Link/Image",
-            "scope": "markup.underline.link.markdown,markup.underline.link.image.markdown",
-            "settings": {
-              "foreground": "#c678dd"
-            }
-          },
-          {
-            "name": "[text-work] Markdown Link Title/Description",
-            "scope": "string.other.link.title.markdown,string.other.link.description.markdown",
-            "settings": {
-              "foreground": "#61afef"
-            }
-          },
-          {
-            "name": "[text-work] Asciidoc Inline Raw",
-            "scope": "markup.raw.monospace.asciidoc",
-            "settings": {
-              "foreground": "#98c379"
-            }
-          },
-          {
-            "name": "[text-work] Asciidoc Inline Raw Punctuation Definition",
-            "scope": "punctuation.definition.asciidoc",
-            "settings": {
-              "foreground": "#e5c07b"
-            }
-          },
-          {
-            "name": "[text-work] Asciidoc List Punctuation Definition",
-            "scope": "markup.list.asciidoc",
-            "settings": {
-              "foreground": "#e5c07b"
-            }
-          },
-          {
-            "name": "[text-work] Asciidoc underline link",
-            "scope": "markup.link.asciidoc,markup.other.url.asciidoc",
-            "settings": {
-              "foreground": "#c678dd"
-            }
-          },
-          {
-            "name": "[text-work] Asciidoc link name",
-            "scope": "string.unquoted.asciidoc,markup.other.url.asciidoc",
-            "settings": {
-              "foreground": "#61afef"
-            }
-          },
-          {
-            "name": "[text-work] JSON Property Name",
-            "scope": "support.type.property-name.json",
-            "settings": {
-              "foreground": "#e06c75"
-            }
-          },
-          {
-            "name": "[text-work] JSON Punctuation for Property Name",
-            "scope": "support.type.property-name.json punctuation",
-            "settings": {
-              "foreground": "#e06c75"
-            }
-          },
-          {
-            "name": "[text-work] Markdown Quote",
-            "scope": "markup.quote.markdown",
-            "settings": {
-              "foreground": "#5c6370"
-            }
-          },
-          {
             "scope": "source.text-work",
             "settings": {
               "foreground": "#e0e0e0"
             }
           },
           {
-            "scope": [
-              "comment.line.double-slash.text-work",
-              "comment.line.double-dash.text-work"
-            ],
+            "name": "[text-work] Comments",
+            "scope": "comment-gray",
             "settings": {
               "foreground": "#7a7a7a",
               "fontStyle": "italic"
             }
           },
           {
-            "scope": "string.quoted.double.text-work",
+            "name": "[text-work] Strings",
+            "scope": "string-orange",
             "settings": {
               "foreground": "#b7cfa0"
             }
           },
           {
-            "scope": "markup.underline.link.email.text-work",
+            "name": "[text-work] Links and Emails",
+            "scope": "link-blue",
             "settings": {
               "foreground": "#61afef",
               "fontStyle": "underline"
             }
           },
           {
-            "scope": "constant.numeric.text-work",
+            "name": "[text-work] Numbers",
+            "scope": "number-cyan",
             "settings": {
               "foreground": "#8f87fd"
             }
           },
           {
-            "scope": [
-              "constant.language.boolean.true.text-work",
-              "constant.language.boolean.true.text-work .constant.language.boolean.true.text-work"
-            ],
+            "name": "[text-work] Success/True",
+            "scope": "green",
             "settings": {
               "foreground": "#6fbf6f"
             }
           },
           {
-            "scope": [
-              "constant.language.boolean.false.text-work",
-              "constant.language.boolean.false.text-work .constant.language.boolean.false.text-work"
-            ],
+            "name": "[text-work] Error/False",
+            "scope": "red",
             "settings": {
               "foreground": "#d96b6b"
             }
           },
           {
-            "scope": "keyword.other.status.text-work",
+            "name": "[text-work] Commands/Keywords",
+            "scope": "magenta",
             "settings": {
               "foreground": "#9ecbff"
             }
           },
           {
-            "scope": "constant.language.abbreviation.text-work",
+            "name": "[text-work] Abbreviations",
+            "scope": "abbreviation-purple",
             "settings": {
               "foreground": "#d084ff"
             }
           },
           {
-            "scope": "constant.language.blue.text-work",
+            "name": "[text-work] Bullets",
+            "scope": "blue",
             "settings": {
               "foreground": "#8488ff"
             }
           },
           {
-            "scope": "entity.name.tag.text-work",
+            "name": "[text-work] Tags",
+            "scope": "yellow",
             "settings": {
               "foreground": "#e0c86b"
             }
           },
           {
-            "scope": "punctuation.symbol.text-work",
+            "name": "[text-work] Punctuation",
+            "scope": "gray",
             "settings": {
               "foreground": "#d7a984"
             }
           },
           {
-            "scope": [
-              "keyword.control.text-work",
-              "keyword.text-work",
-              "variable.language.text-work"
-            ],
-            "settings": {
-              "foreground": "#9ecbff"
-            }
-          },
-          {
-            "scope": "keyword.other.password.text-work",
+            "name": "[text-work] Password",
+            "scope": "password-red",
             "settings": {
               "foreground": "#ff5555",
               "fontStyle": "bold"
             }
           },
           {
-            "scope": "constant.language.uuid.text-work",
+            "name": "[text-work] UUID",
+            "scope": "uuid-cyan",
             "settings": {
               "foreground": "#a4f5f8"
             }
           },
           {
-            "scope": "entity.name.label.text-work",
+            "name": "[text-work] Labels",
+            "scope": "label-brown",
             "settings": {
               "foreground": "#cd9b6a"
             }
           },
           {
-            "scope": "markup.list.bullet.text-work",
-            "settings": {
-              "foreground": "#ff5555"
-            }
-          },
-          {
-            "name": "[text-work] Explicit Color - Violet",
-            "scope": "support.constant.color.violet.text-work",
+            "name": "[text-work] Color Word - Violet",
+            "scope": "violet",
             "settings": {
               "foreground": "#de92f9"
-            }
-          },
-          {
-            "name": "[text-work] Explicit Color - Red",
-            "scope": "support.constant.color.red.text-work",
-            "settings": {
-              "foreground": "#ff5555"
-            }
-          },
-          {
-            "name": "[text-work] Explicit Color - Green",
-            "scope": "support.constant.color.green.text-work",
-            "settings": {
-              "foreground": "#55ff55"
-            }
-          },
-          {
-            "name": "[text-work] Explicit Color - Yellow",
-            "scope": "support.constant.color.yellow.text-work",
-            "settings": {
-              "foreground": "#ffff55"
             }
           }
         ]
