@@ -11,9 +11,7 @@ Provides rich syntax highlighting for `.txt` files, treating them as `text-work`
 - **Keywords**: `status`, `error`, `run`, `if`, `else`, `install`, `cp`, `mv`, `tf`, `npm`, `npx`, `python`, `terraform`, `echo`, `git`, `ssh` and much more.
 - **Colors**: `violet`, `red`, `green`, `yellow`, `blue`.
 - **UUIDs**: Automatically highlights UUIDs.
-- **Booleans**: Highlights `true`, `false`, `ok`, `fail`, etc.
-- **Tags**: Highlights `@tags`.
-- **Week days and months**: Highlights `mon`, `tue`, `wed`, `thu`, `fri`, `sat`, `sun`, `jan`, `feb`, `mar`, `apr`, `may`, `jun`, `jul`, `aug`, `sep`, `oct`, `nov`, `dec`.    
+- **Tags**: Highlights `@tags`.  
 - **Emails & URLs**: Highlights email addresses and web links (`http://`, `https://`).
 - **Abbreviations**: Highlights uppercase abbreviations (e.g., `ABC`, `API`) and words with underscores (e.g., `SN_Global_Support`).
 
@@ -26,9 +24,11 @@ Automatically manages lists when you press `Enter`:
 - **Indentation**: Maintains indentation and supports nested lists.
 - Pressing `Enter` on an empty list item clears the line.
 
-### 3. Date/Time Insertion
+### 3. Section divider with Date/Time Insertion
 - **Alt+Enter**: Insert current date/time separator line *after* the cursor.
 - **Shift+Alt+Enter**: Insert current date/time separator line *before* the cursor.
+## Example
+`--- ✄ --------- 2026.01.06 14:06 -------------------`
 
 ### 4. Mask Passwords
 Password masking works by replacing characters with asterisks using a custom font. This requires installing a font family that renders bold text as asterisks. The extension automatically applies a bold style to any word followed by `@pass`, which triggers the custom font to mask the password.
@@ -43,14 +43,11 @@ Password masking works by replacing characters with asterisks using a custom fon
 2. The language mode should automatically switch to `text-work` (or you can select it manually).
 3. Enjoy the highlighting and productivity features!
 
-## Extension Settings
-
-This extension contributes the following settings:
-
-*   `editor.tokenColorCustomizations`: Customizes colors for specific syntax tokens.
-*   `editor.semanticTokenColorCustomizations`: Customizes semantic token colors.
-
 ## Release Notes
+
+### 0.0.11
+- Refactored color highlighting code.
+- Changed colors, brightness of some colors where decreased.
 
 ### 0.0.3
 - Added support for Roman numeral and Letter based lists.

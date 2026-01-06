@@ -125,8 +125,12 @@
     "numbers": {
       "patterns": [
         {
-          "name": "number-cyan",
-          "match": "\\b[0-9]+(\\.[0-9]+)?\\b"
+          "match": "(\\$|€)?\\b([0-9]+(\\.[0-9]+)?)(k)?\\b",
+          "captures": {
+            "2": {
+              "name": "number-cyan"
+            }
+          }
         }
       ]
     },
@@ -163,6 +167,10 @@
         {
           "name": "magenta",
           "match": "(?i)\\b(if|else|run|install|pull|push)\\b"
+        },
+        {
+          "name": "string-orange",
+          "match": "[\\!\\$\\€\\?]"
         }
       ]
     },
@@ -188,7 +196,6 @@
           "name": "yellow",
           "match": "\\bis[A-Z][a-zA-Z]*\\b"
         },
-
         {
           "name": "yellow",
           "match": "(?i)\\b(yellow)\\b"
