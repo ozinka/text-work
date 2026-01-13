@@ -31,9 +31,6 @@
       "include": "#booleans"
     },
     {
-      "include": "#statuses"
-    },
-    {
       "include": "#abbreviations"
     },
     {
@@ -54,11 +51,11 @@
       "patterns": [
         {
           "name": "comment-gray",
-          "match": "//.*$"
+          "match": "\\s//.*$"
         },
         {
           "name": "comment-gray",
-          "match": "--.*$"
+          "match": "\\s--.*$"
         }
       ]
     },
@@ -162,7 +159,7 @@
         },
         {
           "name": "magenta",
-          "match": "(?i)\\b(status|cp|mv|tf|npm|npx|python\\d*|terraform|echo|git|ssh)\\b"
+          "match": "(?i)\\b(status|cp|mv|tf|npm|npx|python\\d*|terraform|echo|git|ssh|qa|uat)\\b"
         },
         {
           "name": "magenta",
@@ -178,7 +175,7 @@
       "patterns": [
         {
           "name": "abbreviation-purple",
-          "match": "\\b([A-Z\\d]{2,}|[\\w.]*_[\\w.]*)\\b"
+          "match": "\\b(?!(?i:done|prod)\\b)([A-Z\\d]{2,}|[\\w.]*_[\\w.]*)\\b"
         }
       ]
     },
@@ -190,15 +187,11 @@
         },
         {
           "name": "yellow",
-          "match": "(?i)\\b(dev)\\b"
+          "match": "(?i)\\b(dev|yellow)\\b"
         },
         {
           "name": "yellow",
           "match": "\\bis[A-Z][a-zA-Z]*\\b"
-        },
-        {
-          "name": "yellow",
-          "match": "(?i)\\b(yellow)\\b"
         }
       ]
     },
@@ -226,7 +219,7 @@
       "patterns": [
         {
           "name": "label-brown",
-          "match": "^\\s*[^:\\s][^:]*(?=:)"
+          "match": "^\\s*(?!(?i:done|prod)\\b)[^:\\s][^:]*(?=:)"
         },
         {
           "name": "label-brown",

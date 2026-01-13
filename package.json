@@ -185,14 +185,14 @@
             "name": "[text-work] Commands/Keywords",
             "scope": "magenta",
             "settings": {
-              "foreground": "#9ecbff"
+              "foreground": "#e498fb"
             }
           },
           {
             "name": "[text-work] Abbreviations",
             "scope": "abbreviation-purple",
             "settings": {
-              "foreground": "#d084ff"
+              "foreground": "#c568ff"
             }
           },
           {
@@ -235,7 +235,7 @@
             "name": "[text-work] Labels",
             "scope": "label-brown",
             "settings": {
-              "foreground": "#cd9b6a"
+              "foreground": "#fcc084"
             }
           },
           {
