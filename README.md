@@ -45,6 +45,10 @@ Password masking works by replacing characters with asterisks using a custom fon
 
 ## Release Notes
 
+### 0.0.12
+- Add support for browser mode.
+- Refactoring highlight rules.
+
 ### 0.0.11
 - Refactored color highlighting code.
 - Changed colors, brightness of some colors where decreased.

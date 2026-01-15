@@ -1,6 +1,9 @@
 # Change Log
 
 All notable changes to the "text-work" extension will be documented in this file.
+### 0.0.12
+- Add support for browser mode.
+- Refactoring highlight rules.
 
 ## [0.0.10] – Auto-bullet Fixes
 

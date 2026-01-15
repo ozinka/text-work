@@ -2,7 +2,7 @@
   "name": "text-work",
   "displayName": "Text Work",
   "description": "Custom highlighting and productivity tools for .txt files",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "icon": "imgs/icon.png",
   "publisher": "ozinka",
   "engines": {
@@ -14,6 +14,7 @@
     "Other"
   ],
   "main": "./src/extension.js",
+  "browser": "./src/extension.js",
   "activationEvents": [
     "onLanguage:text-work"
   ],
