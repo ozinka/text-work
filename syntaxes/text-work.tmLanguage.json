@@ -31,9 +31,6 @@
       "include": "#booleans"
     },
     {
-      "include": "#statuses"
-    },
-    {
       "include": "#abbreviations"
     },
     {
@@ -53,19 +50,19 @@
     "comments": {
       "patterns": [
         {
-          "name": "comment.line.double-slash.text-work",
-          "match": "//.*$"
+          "name": "comment-gray",
+          "match": "\\s//.*$"
         },
         {
-          "name": "comment.line.double-dash.text-work",
-          "match": "--.*$"
+          "name": "comment-gray",
+          "match": "\\s--.*$"
         }
       ]
     },
     "uuid": {
       "patterns": [
         {
-          "name": "constant.language.uuid.text-work",
+          "name": "uuid-cyan",
           "match": "\\b[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}\\b"
         }
       ]
@@ -73,11 +70,11 @@
     "emails": {
       "patterns": [
         {
-          "name": "markup.underline.link.email.text-work",
+          "name": "link-blue",
           "match": "\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(?:\\.[A-Za-z0-9-]+)*\\.[A-Za-z]{2,}\\b"
         },
         {
-          "name": "markup.underline.link.http.text-work",
+          "name": "link-blue",
           "match": "\\bhttps?://[\\w\\-\\.]+(?:/[\\w\\-./?%&=]*)?\\b"
         }
       ]
@@ -85,7 +82,7 @@
     "passwordPattern": {
       "patterns": [
         {
-          "name": "keyword.other.password.text-work",
+          "name": "password-red",
           "match": "\\S+(?=\\s+@pass\\b)"
         }
       ]
@@ -93,7 +90,7 @@
     "strings": {
       "patterns": [
         {
-          "name": "string.quoted.double.text-work",
+          "name": "string-orange",
           "begin": "\"",
           "end": "\"|(?=^--- ✄)",
           "patterns": [
@@ -101,13 +98,13 @@
               "include": "#emails"
             },
             {
-              "name": "constant.character.escape.text-work",
+              "name": "string-orange",
               "match": "\\\\."
             }
           ]
         },
         {
-          "name": "string.quoted.single.text-work",
+          "name": "string-orange",
           "begin": "(?<!\\w)'(?!\\w)|(?<!\\w)'(?=\\s)",
           "end": "'(?!\\w)|(?=^--- ✄)",
           "patterns": [
@@ -115,7 +112,7 @@
               "include": "#emails"
             },
             {
-              "name": "constant.character.escape.text-work",
+              "name": "string-orange",
               "match": "\\\\."
             }
           ]
@@ -125,83 +122,75 @@
     "numbers": {
       "patterns": [
         {
-          "name": "constant.numeric.text-work",
-          "match": "\\b[0-9]+(\\.[0-9]+)?\\b"
+          "match": "(\\$|€)?\\b([0-9]+(\\.[0-9]+)?)(k)?\\b",
+          "captures": {
+            "2": {
+              "name": "number-cyan"
+            }
+          }
         }
       ]
     },
     "booleans": {
       "patterns": [
         {
-          "name": "constant.language.boolean.true.text-work",
-          "match": "(?i)\\b(true|ok|good|done|passed|eligible|yes|DONE|OK|GOOD|YES|TRUE)\\b"
-        },
-        {
-          "name": "constant.language.boolean.false.text-work",
-          "match": "(?i)\\b(false|FALSE|fail|failed|error|no|not\\s+eligible)\\b"
-        }
-      ]
-    },
-    "statuses": {
-      "patterns": [
-        {
-          "name": "keyword.other.status.text-work",
-          "match": "(?i)\\b(status|cp|mv|tf|npm|npx|python\\d*|terraform|echo|git|ssh)\\b"
+          "name": "green",
+          "match": "(?i)\\b(true|ok|good|done|passed|eligible|yes|green|prod|production)\\b"
         }
       ]
     },
     "colors": {
       "patterns": [
         {
-          "name": "support.constant.color.violet.text-work",
+          "name": "violet",
           "match": "(?i)\\b(violet|purple|monday|mon|tuesday|tue|wednesday|wed|thursday|thu|friday|fri|saturday|sunday)\\b"
         },
         {
-          "name": "support.constant.color.red.text-work",
+          "name": "red",
           "match": "(?i)\\b(red|sun|sat)\\b"
         },
         {
-          "name": "support.constant.color.green.text-work",
-          "match": "(?i)\\bgreen\\b"
+          "name": "red",
+          "match": "(?i)\\b(false|fail|failed|error|no|not\\s+eligible)\\b"
         },
         {
-          "name": "support.constant.color.yellow.text-work",
-          "match": "(?i)\\b(yellow)\\b"
-        },
-        {
-          "name": "constant.language.blue.text-work",
+          "name": "blue",
           "match": "(?i)\\b(blue|Febroray|feb|March|mar|April|apr|May|may|June|jun|July|jul|August|aug|September|sep|October|oct|November|nov|December|dec)\\b"
-        }
-      ]
-    },
-    "keywords": {
-      "patterns": [
+        },
         {
-          "name": "keyword.control.text-work",
-          "match": "(?i)\\b(if|else|run|install)\\b"
+          "name": "magenta",
+          "match": "(?i)\\b(status|cp|mv|tf|npm|npx|python\\d*|terraform|echo|git|ssh|qa|uat)\\b"
+        },
+        {
+          "name": "magenta",
+          "match": "(?i)\\b(if|else|run|install|pull|push)\\b"
+        },
+        {
+          "name": "string-orange",
+          "match": "[\\!\\$\\€\\?]"
         }
       ]
     },
     "abbreviations": {
       "patterns": [
         {
-          "name": "constant.language.abbreviation.text-work",
-          "match": "\\b([A-Z\\d]{2,}|[\\w.]*_[\\w.]*)\\b"
+          "name": "abbreviation-purple",
+          "match": "\\b(?!(?i:done|prod)\\b)([A-Z\\d]{2,}|[\\w.]*_[\\w.]*)\\b"
         }
       ]
     },
     "tags": {
       "patterns": [
         {
-          "name": "entity.name.tag.text-work",
+          "name": "yellow",
           "match": "\\s@[A-Za-z0-9_\\-]+"
         },
         {
-          "name": "entity.name.tag.text-work",
-          "match": "(?i)\\b(dev)\\b"
+          "name": "yellow",
+          "match": "(?i)\\b(dev|yellow)\\b"
         },
         {
-          "name": "entity.name.tag.text-work",
+          "name": "yellow",
           "match": "\\bis[A-Z][a-zA-Z]*\\b"
         }
       ]
@@ -209,7 +198,7 @@
     "punctuation": {
       "patterns": [
         {
-          "name": "punctuation.symbol.text-work",
+          "name": "gray",
           "match": "[-=\\|,.:;(){}\\[\\]\"']"
         }
       ]
@@ -220,7 +209,7 @@
           "match": "^(\\s*)([\\*\\-•▪▫◦‣⁃]\\s|\\d+\\.\\s|[a-zA-Z]\\.\\s|[ivxlcdmIVXLCDM]+\\.\\s|\\.\\s)",
           "captures": {
             "2": {
-              "name": "constant.language.blue.text-work"
+              "name": "blue"
             }
           }
         }
@@ -229,11 +218,11 @@
     "entity": {
       "patterns": [
         {
-          "name": "entity.name.label.text-work",
-          "match": "^\\s*[^:\\s][^:]*(?=:)"
+          "name": "label-brown",
+          "match": "^\\s*(?!(?i:done|prod)\\b)[^:\\s][^:]*(?=:)"
         },
         {
-          "name": "entity.name.label.text-work",
+          "name": "label-brown",
           "match": "(?i)\\b(warning)\\b"
         }
       ]
